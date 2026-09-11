@@ -1,6 +1,6 @@
 ### Repository to submit all my assignments for MBIO612 during Fall 2026
 
-First update~ I'm guessing eventually I'll have my final project in this repository too.
+Week 3 update~
 
 #### Contents
 
