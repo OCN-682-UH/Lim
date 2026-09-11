@@ -33,7 +33,7 @@ my_plot <- ggplot(data,
        y = "Body Mass (g)",
        caption = "Source: Palmer Station LTER / palmerpenguins package") +
   scale_color_manual(values = cal_palette("superbloom3")) + #set color scale using palette from "calecopal"
-  theme_classic() +
+  theme_classic() + #set overall theme to classic
   theme(plot.title = element_text(size = 20), #change size of different text elements
         axis.title = element_text(size = 18),
         axis.text = element_text(size = 15),

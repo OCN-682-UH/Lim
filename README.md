@@ -12,9 +12,11 @@ First update~ I'm guessing eventually I'll have my final project in this reposit
 
 ##### [*Week_03*](https://github.com/OCN-682-UH/Lim/tree/main/Week_03)  
 * [*Output*](https://github.com/OCN-682-UH/Lim/tree/main/Week_03/Output) 
+  * homework_ggplot.png (plot output from [homework_ggplot.R](https://github.com/OCN-682-UH/Lim/blob/main/Week_03/Scripts/homework_ggplot.R))
   * penguin.png (plot output from [ggplot_penguins_2.R](https://github.com/OCN-682-UH/Lim/blob/main/Week_03/Scripts/ggplot_penguins_2.R))
 * [*Scripts*](https://github.com/OCN-682-UH/Lim/tree/main/Week_03/Scripts)  
   * ggplot_penguins_1.R (script for learning basics of ggplot using data from the "palmerpenguins" package)
   * ggplot_penguins_2.R (script for learning basics of ggplot using data from the "palmerpenguins" package)
+  * homework_ggplot.R (script for ggplot homework, body mass by species and sex, using data from the "palmerpneguins" package)
 
 That's it from me for now~
