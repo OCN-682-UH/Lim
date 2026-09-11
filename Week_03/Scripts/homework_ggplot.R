@@ -26,7 +26,7 @@ my_plot <- ggplot(data,
            color = species)) +
   geom_violin(fill = "white") + #violin plot
   geom_beeswarm() + #swarm plot
-  geom_boxplot(fill = NA) +
+  geom_boxplot(fill = NA) + #box plot with no fill so it doesn't block violin & swarm plots
   facet_wrap(~ sex, ncol = 2) + #wrap by species, and make it two columns
   guides(color = "none") + #remove color legend
   labs(title = "Body mass of penguins in Palmer Archipelago, Antarctica",
