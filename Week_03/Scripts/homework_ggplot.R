@@ -6,7 +6,6 @@
 ## Load Libraries
 library(palmerpenguins)
 library(tidyverse)
-library(dplyr) #to subset data
 library(ggbeeswarm) #for swarm plot
 library(calecopal) #color palette of California
 library(colorBlindness) #check color for colorblind-friendly
@@ -46,6 +45,5 @@ my_plot
 cvdPlot(my_plot)
 
 ## Save output of the plot
-my_plot #ggsave saves the last active plot
-ggsave(here("Week_03", "Output", "homework_ggplot.png"),
+ggsave(here("Week_03", "Output", "homework_ggplot.png"), my_plot
        width = 12, height = 10) # set size in inches
