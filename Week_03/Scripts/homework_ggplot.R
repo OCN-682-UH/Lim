@@ -45,5 +45,5 @@ my_plot
 cvdPlot(my_plot)
 
 ## Save output of the plot
-ggsave(here("Week_03", "Output", "homework_ggplot.png"), my_plot
+ggsave(here("Week_03", "Output", "homework_ggplot.png"), my_plot,
        width = 12, height = 10) # set size in inches
