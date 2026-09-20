@@ -48,7 +48,7 @@ ChemData_plot <- ChemData_clean |>
         plot.caption = element_text(size = 12) ) +
   labs(title = "Day time correlation between SGD % and salinity by season",
        x = "Submarine Groundwater Discharge (%)",
-       y = "Salinity",
+       y = "Salinity", #no unit for salinity in data dictionary
        caption = "Source: Silbiger et al. 2020 Proceedings of the Royal Society: B.")
 ChemData_plot #try to categorize by zone with color but they all show similar overlapping best fit lines, seemed redundant to me
 
