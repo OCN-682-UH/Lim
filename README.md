@@ -28,7 +28,7 @@ Week 4 update~
   * homework_tidyr.png (plot output from [homework_tidyr.R](https://github.com/OCN-682-UH/Lim/blob/main/Week_04/Scripts/homework_tidyr.R))
   * hw_summary.csv (summary statistics from [homework_tidyr.R](https://github.com/OCN-682-UH/Lim/blob/main/Week_04/Scripts/homework_tidyr.R))
   * summary.csv (summary statistics from [tidyr_data_wrangling.R](https://github.com/OCN-682-UH/Lim/blob/main/Week_04/Scripts/tidyr_data_wrangling.R))
-* [*Scripts*](https://github.com/OCN-682-UH/Lim/tree/main/Week_03/Scripts)  
+* [*Scripts*](https://github.com/OCN-682-UH/Lim/tree/main/Week_04/Scripts)  
   * dyplyr_data_wrangling.R (script from dplyr lecture)
   * homework_dplyr.R (script for dplyr homework, using data from the "palmerpenguins" package)
   * hoemwork_tidyr.R (scrpt for tidyr homework, usding data from Silbiger et al. 2020)
