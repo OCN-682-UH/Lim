@@ -13,7 +13,7 @@ Week 5 update~
 * [*Week_04*](https://github.com/OCN-682-UH/Lim/tree/main/Week_04)  
   * Data Wrangling with dplyr and tidyr
 * [*Week_05*](https://github.com/OCN-682-UH/Lim/tree/main/Week_05)
-  * Data Wrangling: joins & dates with lubridate
+  * Data Wrangling: joins & dates with lubridate, and advanced plotting
 
 ##### About me:
 I'm a Marine Biology MS student in the [Sherwood Algal Biodiversity Lab](https://sherwoodalgalbiodiversitylab.weebly.com/) at UH Mānoa. I study the systematics and taxonomy of *Bryopsis* (Bryopsidales, Chlorophyta) from shallow and mesophotic habitats of the Hawaiian Islands.
@@ -66,7 +66,10 @@ ___
 |   │   ├── data_dictionary.csv
 |   │   └── site.characteristics.data.csv
 |   ├── Output
-|   │   └── homework_joins_&_dates.png
+|   │   ├── homework_joins_&_dates.png
+|   │   ├── penguin_animation.gif
+|   │   └── penguinplot.png
 |   └── Scripts
+|       ├── advanced_plotting.R
 |       ├── homework_joins_&_dates.R
 |       └── joins_&_dates_data_wrangling.R
