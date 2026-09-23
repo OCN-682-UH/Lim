@@ -1,4 +1,4 @@
-### Data wrangling with tidyr using data biogeochemistry data from Silbiger et al. 2020
+### Data wrangling with tidyr using biogeochemistry data from Silbiger et al. 2020
 ### Created by: Wei Shen Lim
 ### Created on: 2026-09-19
 ##########################################################################

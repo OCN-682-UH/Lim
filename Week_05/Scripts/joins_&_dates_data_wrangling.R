@@ -1,4 +1,4 @@
-### Data wrangling: joins & dates with lubridate using data biogeochemistry data from Silbiger et al. 2020
+### Data wrangling: joins & dates with lubridate using data from Becker and Silbiger (2020) Journal of Experimental Biology
 ### Created by: Wei Shen Lim
 ### Created on: 2026-09-22
 ##########################################################################
