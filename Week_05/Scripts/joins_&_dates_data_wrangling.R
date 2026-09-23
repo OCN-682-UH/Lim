@@ -7,7 +7,7 @@
 library(tidyverse)
 library(here)
 library(ggplot)
-library(ggcats)
+library(ggcats) #plot with cats!
 
 ## Create datasets
 T1 <- tibble(
