@@ -37,8 +37,8 @@ ChemData_plot <- ChemData_clean |>
               values_from = Values) |> 
   ggplot(aes(x = percent_sgd, #correlation between percent_sgd & salinity
              y = Salinity)) +
-  geom_point() + #scatter plot
   geom_smooth(method = "lm") + #best fit line
+  geom_point(size = 2) + #scatter plot
   facet_wrap(~Season, ncol = 2) + #facet wrap by season
   theme_bw() + #bw theme to keep in clean but still have the grid lines
   theme(plot.title = element_text(size = 20), #change size of different text elements
