@@ -14,6 +14,11 @@ Week 5 update~
   * Data Wrangling with dplyr and tidyr
 * [*Week_05*](https://github.com/OCN-682-UH/Lim/tree/main/Week_05)
   * Data Wrangling: joins & dates with lubridate, and advanced plotting
+* [*Week_06*](https://github.com/OCN-682-UH/Lim/tree/main/Week_06)
+  * Introduction to Quarto: making figures and tables, with cross-referencing
+  * intro_to_quarto.html = [HTML Output](https://01a0efb6-8f1b-00a4-3f7c-5746fb7e6a8a.share.connect.posit.cloud/)
+  * quarto_part_2.html = [HTML Output](https://01a0f00d-2a3c-72c5-f89c-14521f6d9162.share.connect.posit.cloud/)
+  * homework_quarto.html = [HTML Output](https://01a0f08c-3111-e92c-078e-b3f56b76e8f2.share.connect.posit.cloud/)
 
 ##### About me:
 I'm a Marine Biology MS student in the [Sherwood Algal Biodiversity Lab](https://sherwoodalgalbiodiversitylab.weebly.com/) at UH Mānoa. I study the systematics and taxonomy of *Bryopsis* (Bryopsidales, Chlorophyta) from shallow and mesophotic habitats of the Hawaiian Islands.
@@ -86,7 +91,7 @@ ___
 |   │   ├── quarto_part_2.html
 |   │   └── meme-1.png
 |   └── Scripts
-|       ├── rsconnect
+|       ├── rsconnect/documents
 |       ├── homework_quarto.qmd
 |       ├── intro_to_quarto.qmd
 |       └── quarto_part_2.qmd
