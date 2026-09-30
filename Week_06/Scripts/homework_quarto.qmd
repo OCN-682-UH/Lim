@@ -80,7 +80,7 @@ Plotted the correlation between %SGD and salinity by season and time.
 
 ```{r}
 #| label: fig-correlation-plot
-#| fig-cap: "Correlation between %SGD and salinity by season and time."
+#| fig-cap: "Correlation between %SGD and salinity by site and tide."
 #| fig-align: "center" #center aligns the figure
 
 ChemData_clean |> 
@@ -89,7 +89,7 @@ ChemData_clean |>
              color = Tide)) +
   geom_smooth(method = "lm") + #best fit line
   geom_point(size = 2) + #scatter plot
-  facet_wrap(~Season, ncol = 2) + #facet wrap by season
+  facet_wrap(~Site, ncol = 2) + #facet wrap by season
   theme_bw() + #bw theme to keep in clean but still have the grid lines
   theme(plot.title = element_text(size = 17), #change size of different text elements
         axis.title = element_text(size = 14),
@@ -104,4 +104,4 @@ ChemData_clean |>
 ```
 
 ### **Final Conclusion**
-As shown in @tbl-summary, the mean values of %SGD are consistently **higher** during low tide, while the mean values of salinity are consistently **lower** during low tide. This pattern between high and low tides, and the **negative correlation** between %SGD and salinity is further highlighted in @fig-correlation-plot.
+As shown in @tbl-summary, the mean values of %SGD are consistently **higher** during low tide, while the mean values of salinity are consistently **lower** during low tide. This pattern between high and low tides, and the **negative correlation** between %SGD and salinity is further highlighted in @fig-correlation-plot. This suggests that salinity can be a good proxy for estimating percent SGD.
