@@ -1,0 +1,12 @@
+name: ocn682_-_week_6_-_intro_to_quarto
+title: OCN682 - Week 6 - Intro to Quarto
+username: weishen23
+account: weishen23
+server: connect.posit.cloud
+hostUrl: https://api.connect.posit.cloud/v1
+appId: 01a0efb6-8f1b-00a4-3f7c-5746fb7e6a8a
+bundleId:
+url: https://connect.posit.cloud/weishen23/content/01a0efb6-8f1b-00a4-3f7c-5746fb7e6a8a
+version: 1
+asMultiple: FALSE
+asStatic: TRUE

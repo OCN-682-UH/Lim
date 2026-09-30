@@ -73,3 +73,20 @@ ___
 |       ├── advanced_plotting.R
 |       ├── homework_joins_&_dates.R
 |       └── joins_&_dates_data_wrangling.R
+|       
+├── Week_06
+|   ├── Data
+|   │   ├── chem_data_dictionary.csv
+|   │   └── chemicaldata_maunalua.csv
+|   ├── Output
+|   │   ├── fig-correlation-plot-1.png
+|   │   ├── fig-penguin-1.png
+|   │   ├── homework_quarto.html
+|   │   ├── intro_to_quarto.html
+|   │   ├── quarto_part_2.html
+|   │   └── meme-1.png
+|   └── Scripts
+|       ├── rsconnect
+|       ├── homework_quarto.qmd
+|       ├── intro_to_quarto.qmd
+|       └── quarto_part_2.qmd

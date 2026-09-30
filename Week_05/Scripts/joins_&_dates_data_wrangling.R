@@ -112,7 +112,7 @@ datetimes <- c(
 )
 datetimes
 
-## Convert the bector to datetime objects
+## Convert the vector to datetime objects
 datetimes <- mdy_hms(datetimes)
 datetimes #now output format is POSIXct!
 

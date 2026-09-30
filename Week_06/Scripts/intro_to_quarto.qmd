@@ -1,0 +1,35 @@
+---
+title: "Introduction to Quarto"
+author: "Wei Shen Lim"
+date: "`r Sys.Date()`" #use your computer's date
+format: html
+embed-resources: true
+warning: false
+message: false
+code-overflow: wrap
+---
+
+```{r}
+library(palmerpenguins)
+library(tidyverse)
+library(here)
+library(beepr) #make beeping sound at the end of your code so you know it's done! #add beep(any number) at the end of your code
+```
+
+###### This part is testing how you can pull numbers directly from your dataset in R, rather than typing them manually, especially if dataset changes overtime.
+
+```{r}
+#| eval: false #don't run this chunk
+
+`r nrow(penguins)` #count number of rows in the 'penguins' dataset
+
+`r ncol(penguins)` #count number of columns in the 'penguins' dataset
+
+`n_distinct(penguins$species)` #count number of different species in the species column, can do the same with other columns
+
+`r round(mean(penguins$bill_length_mm, na.rm = TRUE))` #calculate the mean of bill length, while ommitting NA, and rounding the final value, can do the same with max(), min(), etc.
+```
+
+The dataset has `r nrow(penguins)` rows and `r ncol(penguins)` columns.\
+There are `r nrow(penguins)` penguins from `r n_distinct(penguins$species)` total species across `r n_distinct(penguins$island)` islands.\
+The average bill length across all penguins is `r round(mean(penguins$bill_length_mm, na.rm = TRUE))`, with a maximum length of `r round(max(penguins$bill_length_mm, na.rm = TRUE))` and a minmum length of `r round(min(penguins$bill_length_mm, na.rm = TRUE))`.

@@ -1,0 +1,107 @@
+---
+title: "Figures & Tables in Quarto"
+author: "Wei Shen Lim"
+date: "`r Sys.Date()`" #use your computer's date
+format:
+  html:
+    toc: true
+    toc-depth: 3 #set what how many headings levels show up
+    toc-location: right
+    toc-title: "Table of Contents"
+    code-fold: true #code hidden by default, with a toggle button
+    code-summary: "Show code" #customize the button label
+embed-resources: true
+warning: false
+message: false
+code-overflow: wrap
+knitr:
+  opts_chunk:
+    fig.path: "../Output/" #saves all figures into 'Output' folder, ../ to go up one directory from 'Scripts', then to 'Output'
+---
+
+### **Load Libraries**
+
+```{r}
+library(tidyverse)
+library(here)
+library(kableExtra)
+```
+
+### **Load Data**
+
+Using the same biogeochemistry dataset from *Silbiger et al. 2020* from Week 4.
+
+```{r}
+ChemData <- read_csv(here("Week_06", "Data", "chemicaldata_maunalua.csv"))
+```
+
+### **Prep Data**
+
+I am removing all NAs and separating Tide_time column into two.
+
+```{r}
+ChemData_clean <- ChemData |> 
+  drop_na() |> #remove all NAs
+  separate_wider_delim(cols = Tide_time, #separate Tide_time column into appropriate columns
+                       delim = "_",
+                       names = c("Tide", "Time"),
+                       cols_remove = FALSE)
+```
+
+### **Making a table**
+
+Calculated mean, maximum, and minimum values for %SGD and salinity by:
+
+- site
+- season
+- time
+- tide
+
+```{r}
+#| label: tbl-summary
+#| tbl-cap: "Summary statistics of %SGD and salinity by site, season, time, and tide"
+
+ChemData_clean |>
+  group_by(Site, Season, Time, Tide) |> #group by these categories for summary statistics
+  summarise(SGD_Mean = mean(percent_sgd, na.rm = TRUE), #calculate these summary statistics
+            SGD_Max = max(percent_sgd, na.rm = TRUE),
+            SGD_Min = min(percent_sgd, na.rm = TRUE),
+            Salinity_Mean = mean(Salinity, na.rm = TRUE),
+            Salinity_Max = max(Salinity, na.rm = TRUE),
+            Salinity_Min = min(Salinity, na.rm = TRUE)) |> 
+  kbl() |> #make it a kable table
+  kable_classic() |> #add a theme
+  kable_styling(full_width = FALSE) #don't make it so wide
+```
+
+### **Making a figure**
+
+Plotted the correlation between %SGD and salinity by season and time.
+
+```{r}
+#| label: fig-correlation-plot
+#| fig-cap: "Correlation between %SGD and salinity by season and time."
+#| fig-align: "center" #center aligns the figure
+
+ChemData_clean |> 
+  ggplot(aes(x = percent_sgd, #correlation between percent_sgd & salinity
+             y = Salinity,
+             color = Tide)) +
+  geom_smooth(method = "lm") + #best fit line
+  geom_point(size = 2) + #scatter plot
+  facet_wrap(~Season, ncol = 2) + #facet wrap by season
+  theme_bw() + #bw theme to keep in clean but still have the grid lines
+  theme(plot.title = element_text(size = 17), #change size of different text elements
+        axis.title = element_text(size = 14),
+        axis.text = element_text(size = 12),
+        strip.text = element_text(size = 14),
+        legend.title = element_text(size = 14),
+        legend.text = element_text(size = 12)) +
+  labs(title = "Correlation between %SGD and salinity",
+       x = "Submarine Groundwater Discharge (%)",
+       y = "Salinity (ppt)",
+       color = "Tide")
+```
+
+### **Final Conclusion**
+As shown in @tbl-summary, the mean values of %SGD are consistently **higher** during low tide, while the mean values of salinity are consistently **lower** during low tide. This pattern between high and low tides, and the **negative correlation** between %SGD and salinity is further highlighted in @fig-correlation-plot.

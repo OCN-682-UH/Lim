@@ -1,0 +1,88 @@
+---
+title: "Quarto Part 2"
+author: "Wei Shen Lim"
+date: "`r Sys.Date()`" #use your computer's date
+format:
+  html:
+    toc: true
+    toc-depth: 3 #set what how many headings levels show up
+    toc-location: right
+    toc-title: "Table of Contents"
+    code-fold: true #code hidden by default, with a toggle button
+    code-summary: "Show code" #customize the button label
+embed-resources: true
+warning: false
+message: false
+code-overflow: wrap
+knitr:
+  opts_chunk:
+    fig.path: "../Output/" #saves all figures into 'Output' folder, ../ to go up one directory from 'Scripts', then to 'Output'
+---
+
+```{r}
+library(palmerpenguins)
+library(tidyverse)
+library(kableExtra)
+library(memer) #make a meme in R!
+```
+
+### Simple plot with the penguins dataset
+##### Change the size & position of the figure
+##### Add labels and captions
+```{r}
+#| out-width: "70%" #makes it 70% of the width
+#| fig-align: "center" #center aligns the figure
+#| label: fig-penguin #label figures with fig- to reference later on
+#| fig-cap: "Bill depth and length of Adelie, Chinstrap, and Gentoo Penguins"
+
+ggplot(data = penguins,
+       mapping = aes(x = bill_depth_mm,
+                     y = bill_length_mm,
+                     color = species)) +
+  geom_point() +
+  labs(title = "Bill depth and length",
+       subtitle = "Dimensions for Adelie, Chinstrap, and Gentoo Penguins",
+       x = "Bill depth (mm)",
+       y = "Bill length (mm)",
+       color = "Species",
+       caption = "Source: Palmer Station LTER / palmerpenguins package") +
+  scale_color_viridis_d()
+```
+
+### Make tables with kabelExtra
+##### Add some style
+```{r}
+#| label: tbl-penguin-means #label tables with tbl- to reference later on
+#| tbl-cap: "Mean bill length by species."
+
+penguins |> 
+  group_by(species) |> 
+  summarise(billmean = mean(bill_length_mm, na.rm = TRUE)) |> 
+  kbl() |> #make it a kable table
+  kable_classic() |> #add a theme
+  row_spec(2, bold = TRUE, color = "white", background = "red") |> #highlight row 2
+  kable_styling(full_width = FALSE) #don't make it so wide
+```
+
+### Cross-refereces: Figures
+```{r}
+#reference figures by typing @ followed by the label name of the figure, ex: @fig-penguin
+#it's automatically numbered, i.e. shown as "Figure 1"
+```
+
+As shown in @fig-penguin, bill depth and bill length are positively correlated across all 3 species.
+
+### Cross-refereces: Tables
+```{r}
+#same thing with tables, ex: @tbl-penguin-means
+#also automatically numbered, i.e. shown as "Table 1"
+```
+
+Mean bill lengths are summarised in @tbl-penguin-means.
+
+### Today's totally awesome R package (Meme!)
+```{r}
+meme_get("DistractedBf") |> 
+  meme_text_distbf("Silly R package", "OCN 682 students", "actual coding")
+```
+
