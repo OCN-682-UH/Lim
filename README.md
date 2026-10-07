@@ -2,7 +2,7 @@
 ___
 This repository contains my assignments for this course, updated weekly.
 
-Week 5 update~
+Week 7 update~
 
 #### Contents
 
@@ -19,6 +19,7 @@ Week 5 update~
   * intro_to_quarto.html = [HTML Output](https://01a0efb6-8f1b-00a4-3f7c-5746fb7e6a8a.share.connect.posit.cloud/)
   * quarto_part_2.html = [HTML Output](https://01a0f00d-2a3c-72c5-f89c-14521f6d9162.share.connect.posit.cloud/)
   * homework_quarto.html = [HTML Output](https://01a0f08c-3111-e92c-078e-b3f56b76e8f2.share.connect.posit.cloud/)
+
 
 ##### About me:
 I'm a Marine Biology MS student in the [Sherwood Algal Biodiversity Lab](https://sherwoodalgalbiodiversitylab.weebly.com/) at UH Mānoa. I study the systematics and taxonomy of *Bryopsis* (Bryopsidales, Chlorophyta) from shallow and mesophotic habitats of the Hawaiian Islands.

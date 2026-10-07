@@ -1,0 +1,82 @@
+---
+title: "Plotting Interactive Map"
+author: "Wei Shen Lim"
+date: "`r Sys.Date()`" #use your computer's date
+format:
+  html:
+    toc: true
+    toc-depth: 3 #set what how many headings levels show up
+    toc-location: right
+    toc-title: "Table of Contents"
+    code-fold: true #code hidden by default, with a toggle button
+    code-summary: "Show code" #customize the button label
+embed-resources: true
+warning: false
+message: false
+code-overflow: wrap
+knitr:
+  opts_chunk:
+    fig.path: "../Output/" #saves all figures into 'Output' folder, ../ to go up one directory from 'Scripts', then to 'Output'
+---
+
+### **Load Libraries**
+```{r}
+library(tidyverse)
+library(here)
+library(sf)
+library(leaflet) #interactive HTML maps
+library(scales) #to rescale circle markers size
+```
+
+### **Load Data**
+Using the TidyTuesday [meteorite dataset](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-06-11) from the Meteoritical Society by way of NASA.
+```{r}
+meteor <- read_csv(here("Week_07", "Data", "meteorites.csv"))
+```
+
+### **Prep Data**
+Subsetting the data to only have data on meteors that fell.
+```{r}
+meteor_fell <- meteor |> 
+  filter(fall == "Fell")
+```
+
+
+### **Interactive Map**
+Built an interactive map showcasing the location of where meteorites fell, what year they fell, how big these meteorites were, and with extra information on their names, IDs, and class. 
+
+Started by creating a color function that group 'year' into bins and convert to a color scale.
+```{r}
+pal <- colorBin(palette = "Paired", #group year into bins, RColorBrewer's palette
+                    domain = meteor_fell$year)
+```
+
+Then plotted the interactive map with meteorite name and the year it fell when you hover over the points, and the rest of the info (ID, Class, Mass(g)) on the meteorite when you click on the points.
+```{r}
+#| label: fig-interactive-map
+#| fig-cap: "Interactive map of historical meteorite fall."
+
+leaflet(meteor_fell) |> 
+  addProviderTiles(providers$Esri.WorldImagery) |>  #tried a bunch of different basemap tile layer, but they either did not render or has authentication error
+  addCircleMarkers(lng = ~long,
+                   lat = ~lat,
+                   color = ~pal(year), #set color scale by year
+                   radius = ~rescale(mass, c(4, 20)), #set size by mass, rescale values to a pixel range of 4 to 20 pixels
+                   fillOpacity = 0.9,
+                   label = ~paste(name, year), #hover to see name and year
+                   popup = ~paste("Name:", name, #click to see additional info
+                                  "<br>ID:", id,
+                                  "<br>Class:", class,
+                                  "<br>Year:", year,
+                                  "<br>Mass:", mass, "g")) |> 
+  addLegend(pal = pal, #add legend for Year
+            values = ~year,
+            title = "Year") |> 
+  addScaleBar(position = "bottomleft", #add scale bar
+              options = scaleBarOptions(metric = TRUE, imperial = FALSE))
+#leaflet doesn't have a built-in function to add North Arrow
+#did not add legend for mass because the range is too wide and can't be bin into categories that are meaningful. The size change of the points relating to the mass of the meteorites is just a fun visualization of the data.
+```
+
+### **Key Finds**
+The year 860 CE marks the oldest observed and recorded meteorite fall in history, known as the Nogata meteorite in Nogata, Japan. Meanwhile in 1947, the Sikhote-Alin meteorite fall in the Sikhote-Alin Mountains of Primorsky Krai, in the Russian Far East (Eastern Siberia) is one of the largest and most destructive witnessed meteorite showers in recorded history.
