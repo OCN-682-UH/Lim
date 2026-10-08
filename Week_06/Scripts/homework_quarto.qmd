@@ -63,7 +63,7 @@ Calculated mean, maximum, and minimum values for %SGD and salinity by:
 
 ChemData_clean |>
   group_by(Site, Season, Time, Tide) |> #group by these categories for summary statistics
-  summarise(SGD_Mean = mean(percent_sgd, na.rm = TRUE), #calculate these summary statistics
+  summarise("SGD Mean" = mean(percent_sgd, na.rm = TRUE), #calculate these summary statistics
             "SGD Max" = max(percent_sgd, na.rm = TRUE),
             "SGD Min" = min(percent_sgd, na.rm = TRUE),
             "Salinity Mean" = mean(Salinity, na.rm = TRUE),
