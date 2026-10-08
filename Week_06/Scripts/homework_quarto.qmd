@@ -64,12 +64,12 @@ Calculated mean, maximum, and minimum values for %SGD and salinity by:
 ChemData_clean |>
   group_by(Site, Season, Time, Tide) |> #group by these categories for summary statistics
   summarise(SGD_Mean = mean(percent_sgd, na.rm = TRUE), #calculate these summary statistics
-            SGD_Max = max(percent_sgd, na.rm = TRUE),
-            SGD_Min = min(percent_sgd, na.rm = TRUE),
-            Salinity_Mean = mean(Salinity, na.rm = TRUE),
-            Salinity_Max = max(Salinity, na.rm = TRUE),
-            Salinity_Min = min(Salinity, na.rm = TRUE)) |> 
-  kbl() |> #make it a kable table
+            "SGD Max" = max(percent_sgd, na.rm = TRUE),
+            "SGD Min" = min(percent_sgd, na.rm = TRUE),
+            "Salinity Mean" = mean(Salinity, na.rm = TRUE),
+            "Salinity Max" = max(Salinity, na.rm = TRUE),
+            "Salinity Min" = min(Salinity, na.rm = TRUE)) |> 
+  kbl(digits = 2) |> #make it a kable table
   kable_classic() |> #add a theme
   kable_styling(full_width = FALSE) #don't make it so wide
 ```
