@@ -1,0 +1,241 @@
+---
+title: "Good plot Bad plot"
+author: "Wei Shen Lim"
+date: "`r Sys.Date()`" #use your computer's date
+format:
+  html:
+    toc: true
+    toc-depth: 3 #set what how many headings levels show up
+    toc-location: right
+    toc-title: "Table of Contents"
+    code-fold: true #code hidden by default, with a toggle button
+    code-summary: "Show code" #customize the button label
+embed-resources: true
+warning: false
+message: false
+code-overflow: scroll #allow scroll rather than wrap
+---
+
+### **Overview:**
+
+This is an assignment to make a bad plot and a good plot using the same dataset.
+
+### **Load Libraries**
+
+```{r}
+library(tidyverse)
+library(here)
+library(base64enc) #convert image to data URI to be embedded in Plotly plots
+library(plotly)    #interactive, animated plot
+library(leaflet)   #interactive HTML map
+```
+
+### **Load Data**
+
+I am using data from the Sherwood et al. 2025 paper - [Systematics and taxonomy of *Codium* (Bryopsidales, Chlorophyta) in the Hawaiian Islands: Description of six new species](https://onlinelibrary.wiley.com/doi/full/10.1111/jpy.70091). Specifically, I'm using the [collection information of Hawaiian *Codium* specimens](https://onlinelibrary.wiley.com/action/downloadSupplement?doi=10.1111%2Fjpy.70091&file=jpy70091-sup-0016-TableS1.docx) analyzed in this study, to illustrate the collection locations of characterized specimens belonging to each clade/taxon of Hawaiian *Codium*.
+
+![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1tRkQBnjlvHQyKSrjDVt4tTsDfenotTsdY3E4N1lHvA&s=10)
+
+I created my own dataset from this and saved it as "collection_data.csv". Some of the data I used from this includes:
+
+- Taxon (species)
+- Authority (taxonomic authority)
+- Type (specimen type)
+- Island (collection location)
+- Date (collection date)
+- Depth (collection depth in meters)
+- Collector (specimen collectors)
+- Lat (latitude of collection location)
+- Long (longitude of collection location)
+
+```{r}
+data <- read_csv(here("goodplot-badplot", "Data", "collection_data.csv"))
+```
+
+### **Bad Plot**
+
+For my bad plot, I decided to plot an interactive, animated 3D scatter plot through Plotly to illustrate the collection locations of these characterized specimens.
+
+#### **Load in PNMS map**
+I started by loading in a map of the Papahānaumokuākea National Marine Sanctuary (PNMS) map to include in my plot.
+
+```{r}
+#Load in Papahānaumokuākea National Marine Sanctuary map 
+PNMS <- dataURI(      #convert from URL into a data URI that Plotly can display as an image
+  file = "https://www.papahanaumokuakea.gov/new-images/pmnm-map-exp-1.jpg",
+  mime = "image/jpeg" #specify that image is a JPEG file
+)
+```
+
+#### **Plot "map"**
+Then, I plotted the "map".
+
+```{r}
+#| label: fig-bad-plot
+#| fig-cap: "Collection locations of Hawaiian *Codium* species (Bad Plot)"
+#| out-width: "100%"
+#| fig-height: 6
+
+#Create interactive, animated 3D scatter plot
+plot_ly(data = data,                                  #Use original dataset
+        x = ~Long,                                    #Use longitude for x-axis
+        y = ~Lat,                                     #Use latitude for y-axis
+        z = ~Depth,                                   #Use depth for x-axis
+        frame = ~Taxon,                               #Create animation frames based on Taxon column
+        text = ~Island,                               #Use location names as text labels for points
+        type = "scatter3d",                           #Create 3D scatter plot
+        mode = "markers+text",                        #Display both data points and text labels
+        textposition = "bottom right",                #Position text labels to the bottom right of its point
+        marker = list(size = 8, color = "darkgreen"), #Set marker size to 8 and color to dark green
+        textfont = list(color = "darkgreen"),         #Set text color to dark green
+        showlegend = FALSE) |>                        #Hide the legend from the plot
+  layout(title = list(text = "Codium"), #Set plot title
+         images = list(source = PNMS,      #Add PNMS map image
+                       xref = "paper",     #Position image relative to plot's width
+                       yref = "paper",     #Position image relative to plot's height
+                       x = 1,              #Place image's right edge at the right boundary
+                       y = 1,              #Place image's top edge at the top boundary
+                       sizex = 0.35,       #Set image width to 45% of the plot's width
+                       sizey = 0.35,       #Set image height to 45% of the plot's height
+                       xanchor = "right",  #Align image using its right edge
+                       yanchor = "top",    #Align image using its top edge
+                       sizing = "contain", #Preserve the image's aspect ratio within its allotted size
+                       opacity = 1,        #Make the image fully opaque
+                       layer = "above"),   #Place the image above the plot's data traces
+         paper_bgcolor = "darkblue") |> #Set background color to dark blue
+           animation_opts(frame = 1000,       #Set animation frame duration to 1 second
+                          transition = 1000,  #Set frame transition duration to 1 second
+                          redraw = TRUE)      #Redraw the plot for each frame
+```
+
+#### **Why this is bad!**
+This is a bad plot in many ways. Firstly, my intention for this plot is to show the collection locations of these specimens. Instead of plotting the points onto an actual map, I decided to use a simple scatter plot to show the overall spatial distribution of these points. While the plotted data is accurate, you cannot easily identify the exact locations of these points. I've attached a very small map of PMNS as a reference, so readers will have to look the points and the text associated with it that has their location name, and match it to the barely visible map. 
+
+I've also decided to lean into "the 3D trap", using depth as the z-axis, which makes this plot complicated, but one could argue that since you can rotate this map around, it is still interpretable for the human brain. While plotting all points in one frame will also make this a bad plot as there will be significant overlap in the points and text, I decided that I would instead separate the data into frames by taxon so all data are visible, but only setting each frame to last 1 second before shifting to the next, which allows no time to actually read any of the data while the plot switches between all 16 frames to show the full dataset. The first default showing of this plot also flips the longitude axis, so if you're not paying attention, Hilo is now on the west side, while PNMS is on the east side. 
+
+Next, I decided to mess with the aesthetics but with reasons. I've set the background to be dark blue, because we are in the ocean, and the points and texts of all taxon to dark green, because *Codium* is dark green. This allows you experience what it is like to find these specimens in the field. By doing so, the data is now significantly difficult to read, and I decided not to waste time changing the color of the axes, defaulting to its dark grey color, also making it difficult for the readers to see, but you can still see it if you just zoom in. I decided to use the default axes labels from my dataset, it still accurately represents the axes, but you have to guess what the unit for depth is. I labeled the title of this plot simply as "Codium", which is accurate but doesn't provide adequate information, you might even miss it because it is also in dark grey. Lastly, I removed the legend for taxon and set all taxon to have the same color, so you just have to refer to the bottom label every time you switch between frames to know which specific taxon you're looking at. 
+
+Overall, this "map" is presented in the **wrong format** (scatter plot), **misleading** (longitude axis flip by default), **difficult to interpret** (3D, have to reference to small map, switched between frames per second, inadequate labels), and **plain ugly** (same dark-colored points and texts for all taxon, and dark-colored labels on a dark background). 5 observations are also missing from this plot because they do not have depth information, so this does not fully show all the data analyzed in this study. 
+
+### **Good plot**
+Now we're moving on to the good plot, using the exact same dataset. For this, I made an interactive map using Leaflet.
+
+#### **Set Color Scale and Icon Design**
+I started by assigning marker color to each taxon. I did this by creating a new column in my dataset as the markerColor argument in the Leaflet awesomeIcons() function only accepts 19 predefined color names.
+```{r}
+#Create new dataset with marker_color column to assign a marker color
+data_color <- data |> 
+  mutate(marker_color = case_when( #Assign marker color to each species based on its name in Taxon column
+    Taxon == "Codium pikoii" ~ "red",
+    Taxon == "Codium cf. desultorium" ~ "darkred",
+    Taxon == "Codium upohoae" ~ "lightred",
+    Taxon == "Codium hakakaupilii" ~ "orange",
+    Taxon == "Codium cf. hawaiiense" ~ "beige",
+    Taxon == "Codium cf. intermedium" ~ "green",
+    Taxon == "Codium kanepohihiae" ~ "darkgreen",
+    Taxon == "Codium cf. campanulatum" ~ "lightgreen",
+    Taxon == "Codium cf. mamillosum" ~ "blue",
+    Taxon == "Codium taylorii" ~ "darkblue",
+    Taxon == "Codium torulosum" ~ "lightblue",
+    Taxon == "Codium geppiorum4" ~ "purple",
+    Taxon == "Codium edule" ~ "darkpurple",
+    Taxon == "Codium reediae" ~ "pink",
+    Taxon == "Codium cf. arabicum" ~ "cadetblue",
+    Taxon == "Codium iolekaae" ~ "lightgray",
+    Taxon == "Codium saccatum" ~ "gray",
+    Taxon == "Codium phasmaticum" ~ "yellow"
+  ))
+```
+
+Next, I created customized icons for the markers, reading in the color scale that I made previously. 
+```{r}
+#Create customized icons for the map markers
+all_icons <- awesomeIcons(
+  icon = "ion-leaf",                    #Use a leaf-shaped icon for each marker
+  library = "ion",                      #Use the Ionicons icon library
+  iconColor = "white",                  #Set the leaf symbol to white
+  markerColor = data_color$marker_color #Assign each marker the color stored in its row's marker_color column
+)
+```
+
+#### **Build base layer**
+Here, I started plotting my interactive Leaflet map. This code chunk builds the first base layer, reading in the map base layer and including all data points (all taxon) as my first layer - assigned as "All species".
+```{r}
+#Create Leaflet map and add Esri satellite imagery as the base layer
+map <- leaflet() |> 
+  addProviderTiles(providers$Esri.WorldImagery) |> 
+
+#Add markers for all species to the map
+  addAwesomeMarkers(
+    data = data_color, #Use full dataset for the markers
+    lng = ~Long,       #Use Long column for longitude coordinates
+    lat = ~Lat,        #Use Lat column for latitude coordinates
+    icon = all_icons,  #Use previously created icons with species-specific colors
+    label = ~lapply(paste0("<i>", Taxon, "</i>"), #Display italicized taxon names when hovering over markers
+                    htmltools::HTML),
+    popup = ~paste("Taxon: <i>", Taxon, "</i>",                                 #Display specimen information when a marker is clicked
+                   "<br>Authority:", Authority,                                 #Display taxonomic authority
+                   ifelse(is.na(Type), "", paste0("<br>Type: ", Type)),         #Include Type only when its value is not NA
+                   "<br>Location:", Island,                                     #Display the collection location
+                   "<br>Collection Date:", Date,                                #Display the collection date
+                   "<br>Collector:", Collector,                                 #Display the collector's name
+                   ifelse(is.na(Depth), "", paste0("<br>Depth:", Depth, "m"))), #Include Depth only when its value is not NA
+    clusterOptions = markerClusterOptions( #Group nearby markers into clusters
+      showCoverageOnHover = TRUE),         #Show the area covered by a cluster on hover
+    group = "All species") #Assign all markers to one layer
+```
+
+#### **Build remaining layers**
+Here, I built the rest of my layers, separated by taxon. This allows users to subset specific taxon that they are interested in.
+```{r}
+#Get a list of unique species names from the Taxon column
+species <- unique(data_color$Taxon)
+
+#Repeat marker creation process for each individual species
+for (i in species) {
+  
+  species_data <- filter(data_color, Taxon == i) #Create a subset containing only data for the current species
+  
+  species_icons <- awesomeIcons(             #Create icons using the marker colors assigned to this species
+    icon = "ion-leaf",                       #Use a leaf-shaped icon
+    library = "ion",                         #Use the Ionicons icon library
+    iconColor = "white",                     #Set the leaf symbol to white
+    markerColor = species_data$marker_color) #Assign each marker the color stored in its row's marker_color column
+  
+  #Add markers to the current species as a separate map layer
+  map <- map |> 
+  addAwesomeMarkers(
+    data = species_data,  #Use only data belonging to the current species
+    lng = ~Long,          #Set marker longitude
+    lat = ~Lat,           #Set marker latitude
+    icon = species_icons, #Use icons created for this species
+    label = ~lapply(paste0("<i>", Taxon, "</i>"), #Italicize taxon name in hover label
+                    htmltools::HTML),
+    popup = ~paste("Taxon: <i>", Taxon, "</i>", #Show specimen details when a marker is clicked
+                   "<br>Authority:", Authority,
+                   ifelse(is.na(Type), "", paste0("<br>Type: ", Type)),
+                   "<br>Location:", Island,
+                   "<br>Collection Date:", Date,
+                   "<br>Collector:", Collector,
+                   ifelse(is.na(Depth), "", paste0("<br>Depth:", Depth, "m"))),
+    group = i) #Name this layer after the current species
+}
+```
+
+#### **Put it all together**
+Finally, I built the map with all layers combined, but with the option to toggle between layers (taxon). The default output hides all other taxon layers to reduce clutter at first glance.
+```{r}
+#| label: fig-good-plot
+#| fig-cap: "Collection locations of Hawaiian *Codium* species (Good Plot)"
+
+#Hide individual species layers initially and add a layer-selection control
+map |> 
+  hideGroup(species) |> 
+  addLayersControl(
+    overlayGroups = c("All species", species)) #Allow user to toggle the complete dataset or individual species
+```
+
+#### **Why this is good!**
+This is a good plot for the following reasons. Firstly, the intention matches the output. This clearly shows the collection locations of these specimens, with accurate markers matching their exact locations found on a map. To make this more readable, I clustered nearby markers for my first "All species" layer, allowing readers to zoom into specific clusters by clicking on them. Instead of setting a set animation to switch between taxon, readers are able to toggle between taxon themselves. Each taxon has a different marker color to clearly identify different groups when viewing all taxon, or multiple taxon based on what was selected. These colors and markers also clearly contrast the background map layer, instead of blending into it. A legend is presented in the form of the layer control function, allowing readers to view all taxon available in this dataset at once. Depth is not directly plotted onto this map to reduce complexity, instead, all relevant information are included in a popup, which readers can see when they click on specific markers. Hovering over markers also allow readers to immediately identify which taxon was collected from that specific location. In these labels, the scientific names are accurately italicized. 
+
+Overall, this map is presented in the **correct format**, **accurately presents all data**, **easy to interpret**, and **aesthetically pleasing**. 
