@@ -6,6 +6,9 @@ Week 7 update~
 
 #### Contents
 
+* [*GoodPlotBadPlot*](https://github.com/OCN-682-UH/Lim/tree/main/GoodPlotBadPlot)
+  * Built the worst and the best plots using the same dataset
+  * goodplot_badplot.html = [HTML Output](https://01a12d15-71ce-0d84-35d4-b829791b354d.share.connect.posit.cloud/)
 * [*Week_02*](https://github.com/OCN-682-UH/Lim/tree/main/Week_02)  
   * first script to test out `here`, reading in 'weightdata.csv'
 * [*Week_03*](https://github.com/OCN-682-UH/Lim/tree/main/Week_03)  
@@ -35,6 +38,15 @@ ___
 #### Repository Structure & Contents:
 ```text
 ├── README.md
+|       
+├── GoodPlotBadPlot
+|   ├── Data
+|   │   └── collection_data.csv
+|   ├── Output
+|   │   └── goodplot_badplot.html
+|   └── Scripts
+|       ├── rsconnect/documents/goodplot_badplot.qmd/connect.posit.cloud/weishen23
+|       └── goodplot_badplot.qmd
 |
 ├── Week_02
 │   ├── Data
