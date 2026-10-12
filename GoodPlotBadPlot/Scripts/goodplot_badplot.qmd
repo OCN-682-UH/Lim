@@ -49,7 +49,7 @@ I created my own dataset from this and saved it as "collection_data.csv". Some o
 - Long (longitude of collection location)
 
 ```{r}
-data <- read_csv(here("goodplot-badplot", "Data", "collection_data.csv"))
+data <- read_csv(here("GoodPlotBadPlot", "Data", "collection_data.csv"))
 ```
 
 ### **Bad Plot**
@@ -75,6 +75,9 @@ Then, I plotted the "map".
 #| fig-cap: "Collection locations of Hawaiian *Codium* species (Bad Plot)"
 #| out-width: "100%"
 #| fig-height: 6
+
+#Convert Depth column to a numeric type before plotting
+data$Depth <- as.numeric(as.character(data$Depth))
 
 #Create interactive, animated 3D scatter plot
 plot_ly(data = data,                                  #Use original dataset
@@ -111,11 +114,11 @@ plot_ly(data = data,                                  #Use original dataset
 #### **Why this is bad!**
 This is a bad plot in many ways. Firstly, my intention for this plot is to show the collection locations of these specimens. Instead of plotting the points onto an actual map, I decided to use a simple scatter plot to show the overall spatial distribution of these points. While the plotted data is accurate, you cannot easily identify the exact locations of these points. I've attached a very small map of PMNS as a reference, so readers will have to look the points and the text associated with it that has their location name, and match it to the barely visible map. 
 
-I've also decided to lean into "the 3D trap", using depth as the z-axis, which makes this plot complicated, but one could argue that since you can rotate this map around, it is still interpretable for the human brain. While plotting all points in one frame will also make this a bad plot as there will be significant overlap in the points and text, I decided that I would instead separate the data into frames by taxon so all data are visible, but only setting each frame to last 1 second before shifting to the next, which allows no time to actually read any of the data while the plot switches between all 16 frames to show the full dataset. The first default showing of this plot also flips the longitude axis, so if you're not paying attention, Hilo is now on the west side, while PNMS is on the east side. 
+I've also decided to lean into "the 3D trap", using depth as the z-axis, which makes this plot significantly more complicated. While plotting all points in one frame will also make this a bad plot as there will be significant overlap in the points and text, I decided that I would instead separate the data into frames by taxon so all data are visible, but only setting each frame to last 1 second before shifting to the next, which allows no time to actually read any of the data while the plot switches between all 16 frames to show the full dataset. The default showing of this plot also flips the longitude axis, so if you're not paying attention, Hilo is now on the west side, while PNMS is on the east side. All the axes are free scaled, so the axes ranges are different every time it switches between taxon, making direct comparison between taxon difficult. The default read depth as a factor type rather than numeric, so it was plotting depth in the order it appeared in the data, rather than in ascending or descending order. I decided to fix this so this plot still made some sense, but I decided not to flip the depth axis from its default, so now the deeper depths are at the top and the shallower depths are at the bottom.
 
 Next, I decided to mess with the aesthetics but with reasons. I've set the background to be dark blue, because we are in the ocean, and the points and texts of all taxon to dark green, because *Codium* is dark green. This allows you experience what it is like to find these specimens in the field. By doing so, the data is now significantly difficult to read, and I decided not to waste time changing the color of the axes, defaulting to its dark grey color, also making it difficult for the readers to see, but you can still see it if you just zoom in. I decided to use the default axes labels from my dataset, it still accurately represents the axes, but you have to guess what the unit for depth is. I labeled the title of this plot simply as "Codium", which is accurate but doesn't provide adequate information, you might even miss it because it is also in dark grey. Lastly, I removed the legend for taxon and set all taxon to have the same color, so you just have to refer to the bottom label every time you switch between frames to know which specific taxon you're looking at. 
 
-Overall, this "map" is presented in the **wrong format** (scatter plot), **misleading** (longitude axis flip by default), **difficult to interpret** (3D, have to reference to small map, switched between frames per second, inadequate labels), and **plain ugly** (same dark-colored points and texts for all taxon, and dark-colored labels on a dark background). 5 observations are also missing from this plot because they do not have depth information, so this does not fully show all the data analyzed in this study. 
+Overall, this "map" is presented in the **wrong format** (scatter plot), **misleading** (longitude and depth axis flip by default), **difficult to interpret** (3D, have to reference to small map, switched between frames per second, inadequate labels), and **plain ugly** (same dark-colored points and texts for all taxon, and dark-colored labels on a dark background). 5 observations are also missing from this plot because they do not have depth information, so this does not fully show all the data analyzed in this study. 
 
 ### **Good plot**
 Now we're moving on to the good plot, using the exact same dataset. For this, I made an interactive map using Leaflet.
