@@ -184,7 +184,9 @@ map <- leaflet() |>
                    "<br>Collector:", Collector,                                 #Display the collector's name
                    ifelse(is.na(Depth), "", paste0("<br>Depth:", Depth, "m"))), #Include Depth only when its value is not NA
     clusterOptions = markerClusterOptions( #Group nearby markers into clusters
-      showCoverageOnHover = TRUE),         #Show the area covered by a cluster on hover
+      showCoverageOnHover = TRUE,          #Show the area covered by a cluster on hover
+      maxClusterRadius = 40,               #Default is 80 pixels; lower = tighter spacing
+      disableClusteringAtZoom = 15),       #Turn off clustering at zoom level 15 and closer
     group = "All species") #Assign all markers to one layer
 ```
 
