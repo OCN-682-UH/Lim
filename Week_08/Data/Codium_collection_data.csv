@@ -1,0 +1,119 @@
+﻿Taxon,Authority,Type,Clade,Sherwood,BISH,Field,Island,Date,Depth,Collector,Lat,Long,rbcL,tufA
+Codium pikoii,A.R.Sherwood,NA,A,ARS09297,BISH799518,NWHI-501,"Lalo, PNMS",25-May-16,72,R. Kosaki & B. Hauk,23.65811,-166.06068,PV797629,PV797746
+Codium pikoii,A.R.Sherwood,Holotype,A,ARS09298,BISH799519,NWHI-588,"Lalo, PNMS",12-Jun-16,82,R. Kosaki & B. Hauk,23.65851,-166.28051,PV797630,PV797747
+Codium pikoii,A.R.Sherwood,NA,A,ARS09303,BISH799520,NWHI-478,"Pioneer Bank, PNMS",24-Sep-15,80,R. Kosaki & B. Hauk,25.92913,-173.40412,PV797631,NA
+Codium pikoii,A.R.Sherwood,NA,A,ARS10265,BISH799521,NWHI-667,"Lalo, PNMS",26-Jul-19,68,R. Kosaki & B. Hauk,23.629166,-166.19722,PV797632,PV797748
+Codium cf. desultorium,P.C.Silva et M.E.Chacana,NA,B,ARS00295,NA,HS-6,"Koʻolina, Oʻahu",3-May-05,40,H. Spalding,21.32844,-158.14364,PV797633,PV797749
+Codium cf. desultorium,P.C.Silva et M.E.Chacana,NA,B,ARS00484,NA,HS-95,"Koʻolina, Oʻahu",26-Oct-05,38,H. Spalding,21.32844,-158.14364,PV797634,PV797750
+Codium cf. desultorium,P.C.Silva et M.E.Chacana,NA,B,ARS00546,BISH799522,HS-65,"Lānaʻi Lookout, Oʻahu",3-Aug-05,29,M. Ross,21.2765,-157.6856,PV797635,NA
+Codium cf. desultorium,P.C.Silva et M.E.Chacana,NA,B,ARS00582,BISH799523,HS-106,"Portlock, Oʻahu",2-Dec-05,42,M. Ross,21.25772,-157.70336,PV797636,NA
+Codium cf. desultorium,P.C.Silva et M.E.Chacana,NA,B,ARS08179,BISH799524,HS-322-3,"Mokulēʻia, Oʻahu",30-Oct-11,49,M. Ross,21.59783,-158.18508,PV797637,PV797751
+Codium cf. desultorium,P.C.Silva et M.E.Chacana,NA,B,ARS09299,BISH799525,NWHI-064,"Nihoa, PNMS",6-Sep-12,61,D. Wagner,23.025347,-161.936261,PV797638,PV797752
+Codium cf. desultorium,P.C.Silva et M.E.Chacana,NA,B,ARS10819,BISH799526,NWHI-1094,"Middle Bank, PNMS",9-Jul-21,61,"H. Spalding, T. Williams, J. Fumo & B. Hauk",22.66203,-161.042,PV797639,NA
+Codium upohoae,A.R.Sherwood,NA,C,ARS00467,NA,P4-133,Penguin Banks,17-Dec-04,85,H. Spalding,21.02805,-157.28598,PV797640,NA
+Codium upohoae,A.R.Sherwood,NA,C,ARS09274,BISH799527,NWHI-232,"Lalo, PNMS",11-Sep-14,88,B. Hauk,23.63137,-166.185,PV797641,PV797753
+Codium upohoae,A.R.Sherwood,NA,C,ARS09276,BISH799528,NWHI-394,"Hōlanikū, PNMS",15-Sep-15,91,R. Kosaki & B. Hauk,28.42732,-178.4137,PV797642,NA
+Codium upohoae,A.R.Sherwood,NA,C,ARS09278,BISH799529,NWHI-278,"Manawai, PNMS",17-Sep-14,55,R. Kosaki & B. Hauk,27.78683,-175.85342,PV797643,PV797754
+Codium upohoae,A.R.Sherwood,NA,C,ARS09300,BISH799530,NWHI-086,"Manawai, PNMS",14-Sep-12,56,D. Wagner,27.760167,-175.979467,PV797644,PV797755
+Codium upohoae,A.R.Sherwood,NA,C,ARS09304,BISH799531,NWHI-090,"Kuaihelani, PNMS",16-Sep-12,55,C. Clark,28.69835,-177.434917,PV797645,NA
+Codium upohoae,A.R.Sherwood,NA,C,ARS10023,BISH799532,NWHI-959,"Manawai, PNMS",5-Aug-19,85,R. Kosaki,27.76657,-175.78357,PV797646,NA
+Codium upohoae,A.R.Sherwood,NA,C,ARS10249,BISH799533,NWHI-902,"Manawai, PNMS",3-Aug-19,47,B. Hauk,27.82226,-176.02561,PV797647,PV797756
+Codium upohoae,A.R.Sherwood,NA,C,ARS10251,BISH799534,NWHI-908,"Manawai, PNMS",4-Aug-19,55,B. Hauk,27.8302,-176.02422,PV797648,PV797757
+Codium upohoae,A.R.Sherwood,NA,C,ARS10254,BISH799535,NWHI-939,"Manawai, PNMS",4-Aug-19,52,B. Hauk,27.91051,-175.92371,PV797649,PV797758
+Codium upohoae,A.R.Sherwood,Holotype,C,ARS10257,BISH799536,NWHI-957,"Manawai, PNMS",4-Aug-19,52,J. Leonard,27.90961,-175.92322,PV797650,PV797759
+Codium upohoae,A.R.Sherwood,NA,C,ARS10263,BISH799537,NWHI-618,"Lalo, PNMS",26-Jul-19,68,"S. Matadobra, K. Lopes & B. Hauk",23.629166,-166.19722,PV797651,PV797760
+Codium upohoae,A.R.Sherwood,NA,C,ARS10272,BISH799538,NWHI-860,"Manawai, PNMS",1-Aug-19,46,B. Hauk & K. Lopes,27.7888,-176.0075,PV797652,NA
+Codium hakakaupilii,A.R.Sherwood,Holotype,D,ARS09275,BISH799539,NWHI-323,"Lalo, PNMS",24-Sep-14,62,B. Hauk,23.85753,-165.63333,PV797653,PV797761
+Codium cf. hawaiiense,P.C.Silva et M.E.Chacana,NA,E,ARS00279,NA,HS-16,"Koʻolina, Oʻahu",12-May-05,40,H. Spalding,21.32844,-158.14364,PV797654,PV797762
+Codium cf. hawaiiense,P.C.Silva et M.E.Chacana,NA,E,ARS00293,BISH799540,HS-3,"Koʻolina, Oʻahu",4-May-05,40,H. Spalding,21.32844,-158.14364,PV797655,PV797763
+Codium cf. hawaiiense,P.C.Silva et M.E.Chacana,NA,E,ARS00483,NA,HS-92,"Koʻolina, Oʻahu",26-Oct-05,38,H. Spalding,21.32844,-158.14364,PV797656,PV797764
+Codium cf. hawaiiense,P.C.Silva et M.E.Chacana,NA,E,ARS09277,BISH799541,NWHI-396,"Hōlanikū, PNMS",15-Sep-15,91,R. Kosaki & B. Hauk,28.42732,-178.4137,PV797657,PV797765
+Codium cf. hawaiiense,P.C.Silva et M.E.Chacana,NA,E,ARS09279,BISH799542,NWHI-431,"Salmon Bank, PNMS",18-Sep-15,91,R. Kosaki & B. Hauk,26.87008,-176.49017,PV797658,PV797766
+Codium cf. hawaiiense,P.C.Silva et M.E.Chacana,NA,E,ARS10252,BISH799543,NWHI-911,"Manawai, PNMS",3-Aug-19,55,B. Hauk,27.8302,-176.02422,PV797659,PV797767
+Codium cf. hawaiiense,P.C.Silva et M.E.Chacana,NA,E,ARS10271,NA,NWHI-824B,"Manawai, PNMS",31-Jul-19,67,S. Matadobra,27.9625,-175.8361,PV797660,PV797768
+Codium cf. hawaiiense,P.C.Silva et M.E.Chacana,NA,E,ARS10273,BISH799544,NWHI-876,"Manawai, PNMS",1-Aug-19,46,B. Hauk & K. Lopes,27.7888,-176.0075,PV797661,PV797769
+Codium cf. hawaiiense,P.C.Silva et M.E.Chacana,NA,E,ARS10274,BISH799545,NWHI-896,"Manawai, PNMS",4-Aug-19,47,B. Hauk,27.82226,-176.02561,PV797662,PV797770
+Codium cf. hawaiiense,P.C.Silva et M.E.Chacana,NA,E,ARS10820,BISH799546,NWHI-1279,"Hōlanikū, PNMS",11-Aug-21,22,T. Williams,28.43397,-178.37209,PV797663,PV797771
+Codium cf. hawaiiense,P.C.Silva et M.E.Chacana,NA,E,ARS11491,BISH694933,McDermid-7458,"Hōlanikū, PNMS",25-Sep-22,NA,K. McDermid & B. Stuerke,28.39247,-178.36679,PV797664,NA
+Codium cf. intermedium,P.C.Silva et M.E.Chacana,NA,F,ARS09280,BISH799547,NWHI-206-1,"Kamole, PNMS",24-May-13,61,D. Wagner & R. Kosaki,25.71061,-171.81145,PV797665,NA
+Codium cf. intermedium,P.C.Silva et M.E.Chacana,NA,F,ARS09281,BISH799548,NWHI-249,"Kapou, PNMS",14-Sep-14,59,J. Leonard,26.037,-173.79218,PV797666,PV797772
+Codium cf. intermedium,P.C.Silva et M.E.Chacana,NA,F,ARS09282,BISH799549,NWHI-251,"Kapou, PNMS",14-Sep-14,56,B. Hauk,26.11428,-173.85373,PV797667,PV797773
+Codium cf. intermedium,P.C.Silva et M.E.Chacana,NA,F,ARS09285,BISH799550,NWHI-074,"Lalo, PNMS",8-Sep-12,62,D. Wagner,23.6398,-166.25455,PV797668,PV797774
+Codium cf. intermedium,P.C.Silva et M.E.Chacana,NA,F,ARS09286,BISH799551,NWHI-09286,"Manawai, PNMS",13-Sep-12,58,D. Wagner,27.786133,-175.750167,PV797669,PV797775
+Codium cf. intermedium,P.C.Silva et M.E.Chacana,NA,F,ARS09287,BISH799552,NWHI-087,"Manawai, PNMS",14-Sep-12,56,D. Wagner,27.760167,-175.979467,PV797670,PV797776
+Codium cf. intermedium,P.C.Silva et M.E.Chacana,NA,F,ARS10247,NA,NWHI-866,"Manawai, PNMS",1-Aug-19,46,B. Hauk,27.7888,-176.0075,PV797671,NA
+Codium cf. intermedium,P.C.Silva et M.E.Chacana,NA,F,ARS10250,BISH799553,NWHI-907,"Manawai, PNMS",3-Aug-19,55,B. Hauk,27.8302,-176.02422,PV797672,NA
+Codium cf. intermedium,P.C.Silva et M.E.Chacana,NA,F,ARS10255,BISH799554,NWHI-942,"Manawai, PNMS",3-Aug-19,12,H. Spalding & T. Williams,27.89606,-175.93386,NA,PV797777
+Codium cf. intermedium,P.C.Silva et M.E.Chacana,NA,F,ARS10256,BISH799555,NWHI-946,"Manawai, PNMS",4-Aug-19,61,B. Hauk,27.91051,-175.92371,PV797673,NA
+Codium cf. intermedium,P.C.Silva et M.E.Chacana,NA,F,ARS10259,BISH799556,NWHI-1005,"Manawai, PNMS",5-Aug-19,53,J. Leonard,27.77333,-175.79791,PV797674,PV797778
+Codium cf. intermedium,P.C.Silva et M.E.Chacana,NA,F,ARS10268,BISH799557,NWHI-801,"Manawai, PNMS",31-Jul-19,17,H. Spalding & T. Williams,27.91062,-175.90483,PV797675,PV797779
+Codium kanepohihiae,A.R.Sherwood,Holotype,G,ARS09305,BISH799558,NWHI-252,"Kapou, PNMS",14-Sep-14,56,B. Hauk,26.11428,-173.85373,PV797676,PV797780
+Codium kanepohihiae,A.R.Sherwood,NA,G,ARS11580,NA,NWHI-1300,"Lalo, PNMS",5-Jul-23,114,H. Spalding,23.75794,-166.33467,PV797677,PV797781
+Codium cf. campanulatum ,P.C.Silva et M.E.Chacana,NA ,H,ARS09295,BISH799559,NWHI-162-1,"Nihoa, PNMS",18-May-13,64,D. Wagner,23.04959,-162.26033,PV797678,PV797782
+Codium cf. campanulatum ,P.C.Silva et M.E.Chacana,NA ,H,ARS09296,BISH799560,NWHI-216,"Lalo, PNMS",27-May-13,67,K. Gleason,23.6633,-166.25529,PV797679,PV797783
+Codium cf. campanulatum ,P.C.Silva et M.E.Chacana,NA ,H,ARS09301,BISH799561,NWHI-335,"Lalo, PNMS",9-Sep-15,91,R. Kosaki & J. Leonard,23.73845,-166.38115,PV797680,PV797784
+Codium cf. campanulatum ,P.C.Silva et M.E.Chacana,NA ,H,ARS09302,BISH799562,NWHI-348,"Lalo, PNMS",8-Sep-15,91,R. Kosaki & B. Hauk,23.83972,-166.38172,PV797681,NA
+Codium cf. campanulatum ,P.C.Silva et M.E.Chacana,NA ,H,ARS10264,BISH799563,NWHI-663,"Lalo, PNMS",26-Jul-19,68,"S. Matadobra, K. Lopes & B. Hauk",23.629166,-166.19722,PV797682,PV797785
+Codium cf. campanulatum ,P.C.Silva et M.E.Chacana,NA ,H,ARS10267,BISH799564,NWHI-783,"Manawai, PNMS",31-Jul-19,20,H. Spalding & T. Williams,27.94077,-174.68175,PV797683,PV797786
+Codium cf. campanulatum ,P.C.Silva et M.E.Chacana,NA ,H,ARS10277,BISH799565,NWHI-916,"Manawai, PNMS",3-Aug-19,92,J. Leonard & K. Lopes,27.82025,-176.04132,PV797684,PV797787
+Codium cf. campanulatum ,P.C.Silva et M.E.Chacana,NA ,H,ARS10818,BISH799566,NWHI-1087,"Middle Bank, PNMS",9-Jul-21,61,"H. Spalding, T. Williams, J. Fumo & B. Hauk",22.66203,-161.042,PV797685,NA
+Codium cf. mamillosum ,Harvey,NA,I,ARS09288,BISH799567,NWHI-104,"Kapou, PNMS",20-Sep-12,58,D. Wagner,26.152717,-173.9027,PV797686,PV797788
+Codium cf. mamillosum ,Harvey,NA,I,ARS09289,BISH799568,NWHI-271,"Kapou, PNMS",16-Sep-14,64,D. Wagner,26.0317,-174.15823,PV797687,NA
+Codium cf. mamillosum ,Harvey,NA,I,ARS10253,BISH799569,NWHI-923,"Manawai, PNMS",3-Aug-19,92,J. Leonard & K. Lopes,27.82025,-176.04132,PV797688,PV797789
+Codium taylorii,P.C.Silva,NA,J,ARS01706,BISH799570,NA,"Cromwell's Beach, Oʻahu",15-Dec-06,2,T. Shipley,21.257101,-157.796806,PV797689,PV797790
+Codium taylorii,P.C.Silva,NA,J,ARS08106,BISH799571,NA,"Cromwell's Beach, Oʻahu",10-Nov-11,2,J. Neumann & R. Wade,21.257101,-157.796806,PV797690,PV797791
+Codium taylorii,P.C.Silva,NA,J,ARS08110,BISH799572,NA,"Cromwell's Beach, Oʻahu",10-Nov-11,2,J. Neumann & R. Wade,21.257101,-157.796806,PV797691,PV797792
+Codium taylorii,P.C.Silva,NA,J,ARS08114,BISH799573,NA,"Cromwell's Beach, Oʻahu",10-Nov-11,2,J. Neumann & R. Wade,21.257101,-157.796806,PV797692,PV797793
+Codium taylorii,P.C.Silva,NA,J,ARS10260,BISH799574,NWHI-1006,"Manawai, PNMS",5-Aug-19,53,J. Leonard,27.77333,-175.79791,PV797693,PV797794
+Codium taylorii,P.C.Silva,NA,J,ARS10266,BISH799575,NWHI-672,"Lalo, PNMS",26-Jul-19,77,R. Kosaki,23.636388,-166.21444,PV797694,PV797795
+Codium torulosum,A.R.Sherwood,Holotype,K,ARS02200,BISH799576,NA,"Laupāhoehoe Beach Park, Hawaiʻi",24-Feb-07,2,A. Kurihara,19.9938,-155.241,PV797695,PV797796
+Codium torulosum,A.R.Sherwood,NA,K,ARS02304,NA,NA,"Hilo Bay, Hawaiʻi",24-Feb-07,2,A. Kurihara,19.7249,-155.08,PV797696,PV797797
+Codium torulosum,A.R.Sherwood,NA,K,ARS02475,BISH799577,NA,"Anahola Beach Park, Kauaʻi",17-Mar-07,2,T. Shipley,22.1507,-159.306,PV797697,NA
+Codium torulosum,A.R.Sherwood,NA,K,ARS08164,BISH698270,MOLHLR1-001,"Hale O Lono Harbor, Molokaʻi",28-Jan-03,10.5,P. Reath,21.083722,-157.249361,PV797698,NA
+Codium torulosum,A.R.Sherwood,NA,K,ARS10269,BISH799578,NWHI-815,"Manawai, PNMS",31-Jul-19,2,H. Spalding & T. Williams,27.9578,-175.80208,PV797699,NA
+Codium torulosum,A.R.Sherwood,NA,K,ARS11582,BISH799579,NWHI-1329,"Hōlanikū, PNMS",12-Jul-23,19,H. Spalding,28.44074,-178.36086,PV797700,PV797798
+Codium geppiorum4,Verbruggen et al.,NA,L,ARS00251,NA,NA,"Portlock, Oʻahu",27-Mar-25,30,M. Ross,21.2738,-157.709,PV797701,PV797799
+Codium geppiorum4,Verbruggen et al.,NA,L,ARS00252,NA,NA,"Portlock, Oʻahu",27-Mar-25,30,M. Ross,21.2738,-157.709,PV797702,PV797800
+Codium geppiorum4,Verbruggen et al.,NA,L,ARS00526,NA,NA,"Kaʻanapali, Maui",21-May-05,2,A. Sherwood & G. Presting,20.9228,-156.696,PV797703,PV797801
+Codium geppiorum4,Verbruggen et al.,NA,L,ARS01633,BISH799580,COML-273,"Lalo, PNMS",24-Oct-06,2,K. Coontz,23.636388,-166.21444,PV797704,PV797802
+Codium geppiorum4,Verbruggen et al.,NA,L,ARS02054,BISH799581,NA,"Māʻalaea Harbor, Maui",28-Jan-07,2,K. Conklin,20.7913,-156.511,PV797705,PV797803
+Codium geppiorum4,Verbruggen et al.,NA,L,ARS02144,BISH799582,NA,Molokaʻi,10-Feb-07,1,T. Shipley,21.0871,-157.25,PV797706,PV797804
+Codium edule,P.C.Silva,NA,M,ARS00124,BISH799583,NA,"Hunakaʻi, Oʻahu",16-Jan-05,2,A. Sherwood & G. Presting,21.2569,-157.798,PV797707,PV797805
+Codium edule,P.C.Silva,NA,M,ARS01688,BISH799584,NA,"Portlock, Oʻahu",15-Dec-06,2,T. Shipley,21.2738,-157.709,PV797708,PV797806
+Codium edule,P.C.Silva,NA,M,ARS05301,BISH799585,NA,"Puako, Hawaiʻi",21-Feb-08,2,A. Kurihara & K. Conklin,19.9658,-155.854,PV797709,NA
+Codium edule,P.C.Silva,Topotype,M,ARS08000,BISH799586,NA,"Kaimana Beach Park, Oʻahu",22-Sep-11,2,"A. Sherwood, P. Rentsch & Y. Tang",21.2636,-157.822,PV797710,PV797807
+Codium edule,P.C.Silva,NA,M,ARS08009,NA,NA,"Hunakaʻi, Oʻahu",29-Sep-11,2,"A. Sherwood, J. Neumann & P. Rentsch",21.2569,-157.798,PV797711,PV797808
+Codium edule,P.C.Silva,NA,M,ARS08049,NA,NA,"Hunakaʻi, Oʻahu",20-Oct-11,2,"A. Sherwood, P. Rentsch & Y. Tang",21.2569,-157.798,PV797712,PV797809
+Codium edule,P.C.Silva,NA,M,ARS08108,BISH799587,NA,"Cromwell's Beach, Oʻahu",10-Nov-11,2,J. Neumann & R. Wade,21.257101,-157.796806,PV797713,PV797810
+Codium edule,P.C.Silva,NA,M,ARS11581,NA,NWHI-1301,"Lalo, PNMS",5-Jul-23,114,H. Spalding,23.75794,-166.33467,PV797714,PV797811
+Codium edule,P.C.Silva,NA,M,ARS11583,BISH799589,NWHI-1380,"Kuaihelani, PNMS",19-Jul-23,5,H. Spalding,28.21823,-177.38713,PV797715,PV797812
+Codium reediae,P.C.Silva,NA,N,ARS01926,BISH799590,NA,"Wailea, Maui",27-Jan-07,1,T. Shipley,20.6888,-156.446,PV797716,PV797813
+Codium reediae,P.C.Silva,NA,N,ARS01937,BISH799591,NA,"Lipoa Street, Maui",28-Jan-07,0,T. Shipley,20.7474,-156.458,PV797717,PV797814
+Codium reediae,P.C.Silva,NA,N,ARS01939,BISH799592,NA,"Kihei, Maui",27-Jan-07,0,T. Shipley,20.7761,-156.463,PV797718,NA
+Codium reediae,P.C.Silva,NA,N,ARS02473,BISH799593,NA,"Kekaha, Kauaʻi",18-Mar-07,2,K. Conklin,21.9639,-159.711,PV797719,NA
+Codium reediae,P.C.Silva,Topotype,N,ARS08112,BISH799594,NA,"Cromwell's Beach, Oʻahu",10-Nov-11,2,J. Neumann & R. Wade,21.257101,-157.796806,PV797720,PV797815
+Codium cf. arabicum ,Kützing,NA,O,ARS02305,NA,NA,"Hilo, Hawaiʻi",24-Feb-07,2,T. Shipley,19.086,-155.55,PV797721,PV797816
+Codium cf. arabicum ,Kützing,NA,O,ARS02385,NA,NA,"Hilo, Hawaiʻi",24-Feb-07,2,K. Conklin,19.086,-155.55,PV797722,PV797817
+Codium cf. arabicum ,Kützing,NA,O,ARS02408,NA,NA,"Hilo, Hawaiʻi",18-Mar-07,2,A. Kurihara,19.086,-155.55,PV797723,PV797818
+Codium cf. arabicum ,Kützing,NA,O,ARS02418,BISH799595,NA,"Anini Reef, Kauaʻi",17-Mar-07,2,K. Conklin & T. Shipley,22.2234,-159.438,PV797724,PV797819
+Codium cf. arabicum ,Kützing,NA,O,ARS08001,BISH799596,NA,"Kaimana Beach Park, Oʻahu",22-Sep-11,2,"A. Sherwood, P. Rentsch & Y. Tang",21.2636,-157.822,PV797725,PV797820
+Codium cf. arabicum ,Kützing,NA,O,ARS08010,NA,NA,"Hunakaʻi, Oʻahu",29-Sep-11,2,"A. Sherwood, J. Neumann & P. Rentsch",21.2569,-157.798,PV797726,PV797821
+Codium cf. arabicum ,Kützing,NA,O,ARS08046,BISH799597,NA,"Hunakaʻi, Oʻahu",20-Oct-11,2,"A. Sherwood, P. Rentsch & Y. Tang",21.2569,-157.798,PV797727,PV797822
+Codium cf. arabicum ,Kützing,NA,O,ARS08047,BISH799598,NA,"Hunakaʻi, Oʻahu",20-Oct-11,2,"A. Sherwood, P. Rentsch & Y. Tang",21.2569,-157.798,PV797728,PV797823
+Codium cf. arabicum ,Kützing,NA,O,ARS08048,NA,NA,"Hunakaʻi, Oʻahu",20-Oct-11,2,"A. Sherwood, P. Rentsch & Y. Tang",21.2569,-157.798,PV797729,PV797824
+Codium cf. arabicum ,Kützing,NA,O,ARS08050,NA,NA,"Hunakaʻi, Oʻahu",20-Oct-11,2,"A. Sherwood, P. Rentsch & Y. Tang",21.2569,-157.798,PV797730,PV797825
+Codium iolekaae ,A.R.Sherwood,NA,P,ARS00278,BISH799599,HS-5-1,"Koʻolina, Oʻahu",3-May-05,40,H. Spalding,21.32844,-158.14364,PV797731,PV797826
+Codium iolekaae ,A.R.Sherwood,NA,P,ARS00290,BISH799600,HS-5-2,"Koʻolina, Oʻahu",12-May-05,40,H. Spalding,21.32844,-158.14364,PV797732,PV797827
+Codium iolekaae ,A.R.Sherwood,Holotype,P,ARS00545,BISH799601,HS-64,"Portlock, Oʻahu",2-Aug-05,40,M. Ross,21.2738,-157.709,PV797733,PV797828
+Codium iolekaae ,A.R.Sherwood,NA,P,ARS00664,NA,HS-65,"Ala Moana, Oʻahu",2-Aug-05,30,M. Ross,21.26546,-157.84128,PV797734,PV797829
+Codium iolekaae ,A.R.Sherwood,NA,P,ARS01421,NA,HS-69,"Portlock, Oʻahu",3-Apr-05,27,M. Ross,21.25772,-157.70336,PV797735,NA
+Codium iolekaae ,A.R.Sherwood,NA,P,ARS08176,BISH799602,HS-237,"Ala Wai ledge, Oʻahu",23-Jun-08,45,H. Spalding,21.26746,-157.8465,PV797736,PV797830
+Codium saccatum,Okamura,NA,Q,ARS09291,BISH799603,NWHI-303,"Kuaihelani, PNMS",20-Sep-14,65,R. Kosaki & B. Hauk,28.23552,-177.45007,PV797737,PV797831
+Codium saccatum,Okamura,NA,Q,ARS09292,BISH799604,NWHI-317,"Kuaihelani, PNMS",20-Sep-14,55,D. Wagner,28.27648,-177.43187,PV797738,PV797832
+Codium saccatum,Okamura,NA,Q,ARS09293,BISH799605,NWHI-433,"Salmon Bank, PNMS",18-Sep-15,NA,R. Kosaki & B. Hauk,26.87008,-176.49017,PV797739,NA
+Codium saccatum,Okamura,NA,Q,ARS10258,NA,NWHI-960,"Manawai, PNMS",5-Aug-19,85,R. Kosaki,27.76657,-175.78357,PV797740,PV797833
+Codium saccatum,Okamura,NA,Q,ARS10821,BISH799606,NWHI-1281,"Hōlanikū, PNMS",11-Aug-21,22,T. Williams,28.43397,-178.37209,PV797741,PV797834
+Codium saccatum,Okamura,NA,Q,ARS11073,BISH799607,NWHI-35,"Kuaihelani, PNMS",15-Aug-13,59,R. Kosaki,28.191944,-177.43028,PV797742,PV797835
+Codium phasmaticum,Setchell,NA,T,ARS08162,BISH697304,IA30148,"Lawai Kai, Kauaʻi",5-May-03,NA,K. Peyton & K. Schultz,21.88832,-159.50367,PV797743,NA
+Codium phasmaticum,Setchell,Topotype,T,ARS08163,BISH698675,IA28463,"Laupāhoehoe Nui, Hawaiʻi",4-Jun-03,NA,K. Peyton,20.16489,-155.65273,PV797744,NA
+Codium phasmaticum,Setchell,Topotype,T,ARS11493,BISH697302,IA28963,"Laupāhoehoe Nui, Hawaiʻi",26-May-03,NA,K. Peyton,20.16489,-155.65273,PV797745,NA

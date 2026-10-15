@@ -1,0 +1,342 @@
+---
+title: "Functional Programming"
+author: "Wei Shen Lim"
+date: "`r Sys.Date()`" #use your computer's date
+format:
+  html:
+    toc: true
+    toc-depth: 3 #set what how many headings levels show up
+    toc-location: right
+    toc-title: "Table of Contents"
+    code-fold: true #code hidden by default, with a toggle button
+    code-summary: "Show code" #customize the button label
+embed-resources: true
+warning: false
+message: false
+code-overflow: scroll
+knitr:
+  opts_chunk:
+    fig.path: "../Output/" #saves all figures into 'Output' folder, ../ to go up one directory from 'Scripts', then to 'Output'
+---
+
+### **Overview**
+
+This is an assignment to create two useful functions, one that creates a plot, one that does something else. 2 examples per function are shown as evidence of the functions' flexibility.
+
+### **Load Libraries**
+
+```{r}
+library(tidyverse)
+library(here)
+library(DT) #interactive table to fully view output of function 1
+library(leaflet) #interactive map for function 2
+```
+
+### **Load Data**
+
+I am using data from the Sherwood et al. 2025 paper - [Systematics and taxonomy of *Codium* (Bryopsidales, Chlorophyta) in the Hawaiian Islands: Description of six new species](https://onlinelibrary.wiley.com/doi/full/10.1111/jpy.70091). Specifically, I'm using the [collection information of Hawaiian *Codium* specimens](https://onlinelibrary.wiley.com/action/downloadSupplement?doi=10.1111%2Fjpy.70091&file=jpy70091-sup-0016-TableS1.docx) analyzed in this study, to illustrate the collection locations of characterized specimens belonging to each clade/taxon of Hawaiian *Codium*.
+
+To show the functions' flexibility, I am also using data from the Allsopp et al. 2026 paper - [Three new species of *Scinaia* (Scinaiaceae, Nemaliales) from Hawaiian mesophotic reefs](https://www.tandfonline.com/doi/full/10.1080/00318884.2026.2653264). Specifically, I'm using the [collection information of Hawaiian *Scinaia* specimens](https://www.tandfonline.com/action/downloadSupplement?doi=10.1080%2F00318884.2026.2653264&file=uphy_a_2653264_sm6137.xlsx) analyzed in this study, to illustrate the collection locations of characterized specimens belong to each clade/taxon of Hawaiian *Scinaia*.
+
+```{r}
+Codium <- read_csv(here("Week_08", "Data", "Codium_collection_data.csv"))   #Data for the genus Codium
+Scinaia <- read_csv(here("Week_08", "Data", "Scinaia_collection_data.csv")) #Data for the genus Scinaia
+```
+
+### **Load Functions**
+
+#### [Function 1: Assign marker colors to each taxon]{.underline}
+
+This function automatically assigns predefined Leaflet marker colors to each unique taxon in a dataset column. This adds the assigned colors as a new marker_color column.
+
+**Usage: assign_taxon_colors(\
+data,\
+taxon_column\
+)**
+
+```{r}
+assign_taxon_color <- function(
+    data,           #Data frame containing taxon records and information
+    taxon_column) { #Column containing taxon names
+  
+  #The 19 predefined marker colors supported by Leaflet awesomeIcons()
+  available_colors <- c(
+    "red", "darkred", "lightred", "orange", "beige",
+    "green", "darkgreen", "lightgreen", "blue", "darkblue",
+    "lightblue", "purple", "darkpurple", "pink", "cadetblue",
+    "gray","lightgray","black" #Omitted "white" because marker icon will be white
+  )
+  
+  #Extract the column specified by taxon_column from the dataset
+  taxa <- unique(data[[taxon_column]]) #Get all unique taxa in that column
+  taxa <- sort(taxa[!is.na(taxa)])     #Remove NA and sort remaining taxon names alphabetically
+  
+  #Assign a marker color to each unique taxon
+  taxon_colors <- setNames(         #Uses taxon names as names for their corresponding colors
+    rep(available_colors,           #Repeat the 19 available colors as many times as needed
+        length.out = length(taxa)), #Sets the total number of colors to match the number of taxa
+    taxa
+  )
+  
+  #Add a new column named marker_color to the original dataset
+  data <- data |> 
+    mutate(
+      marker_color = unname( #Removes the names from the resulting color vector so mutate() inserts only the color values into marker_color
+        taxon_colors[as.character(.data[[taxon_column]])] #Converts the taxon values to character strings so they match the names used in taxon_colors
+      )
+    )
+  
+  #Return the modified dataset, including the new marker_color column
+  return(data)
+}
+```
+
+#### [Function 2: Generate individual interactive distribution maps for each taxon]{.underline}
+
+This functions generates a list of interactive Leaflet maps, with one map per taxon. Each map displays specimen collection locations on satellite imagery, using color-coded markers, italicized taxon labels, and popups containing specimen information. The function accommodates optional data columns and automatically adjusts the map extent to display the taxon's recorded locations.
+
+**Usage: create_taxon_maps(\
+data,\
+taxon_column,\
+longtitude_column,\
+latitude_column,\
+location_column,\
+date_column,\
+color_column,\
+authority_column = NULL,\
+type_column = NULL,\
+collector_column = NULL,\
+depth_column = NULL\
+)**
+
+```{r}
+#Define a function to create one interactive map for each taxon
+create_taxon_maps <- function(
+    data,                    #Data frame containing taxon records and information
+    taxon_column,            #Column containing taxon names
+    longtitude_column,       #Column containing longitude coordinates
+    latitude_column,         #Column containing latitude coordinates
+    location_column,         #Column containing collection locations
+    date_column,             #Column containing collection dates
+    authority_column = NULL, #Optional column containing taxonomic authority
+    type_column = NULL,      #Optional column containing specimen type information
+    collector_column = NULL, #Optional column containing collector(s) names
+    depth_column = NULL,     #Optional column containing collection depths
+    color_column = NULL) {   #Optional column containing marker colors for each record
+  
+  #Identify all unique taxa, excluding missing taxon names
+  taxa <- unique(data[[taxon_column]]) #Get all unique taxa in that column
+  taxa <- taxa[!is.na(taxa)]           #Remove NAs
+  
+  #Create an empty list to store the individual taxon maps
+  maps <- list()
+  
+  #Loop through each unique taxon to generate its own map
+  for (taxon in taxa) {
+    
+    #Filter the dataset to include only the current taxon
+    taxon_data <- data |> 
+      filter(.data[[taxon_column]] == taxon)
+    
+    #Create leaf-shaped map markers using the assigned color for each record
+    taxon_icons <- awesomeIcons(
+      icon = "ion-leaf",                       #Use a leaf-shaped icon
+      library = "ion",                         #Use the Ionicons icon library
+      iconColor = "white",                     #Set the icon symbol to white
+      markerColor = taxon_data[[color_column]] #Set marker colors from the specified column
+    )
+    
+     #Create the initial popup text for each specimen record
+      popup_text <- paste0(
+        "Taxon: <i>", taxon_data[[taxon_column]], "</i>",  #Includes taxon name (italicized)
+        "<br>Location: ", taxon_data[[location_column]],   #Includes collection location
+        "<br>Collection Date: ", taxon_data[[date_column]] #Includes collection date
+      )
+    
+     #Add taxonomic authority only if an authority column is provided
+     if (!is.null(authority_column)) {
+       popup_text <- paste0(
+         popup_text,
+         ifelse(is.na(taxon_data[[authority_column]]), "", #Omit if value is missing
+                paste0("<br>Authority: ", taxon_data[[authority_column]]))
+       )
+     }
+    
+     #Add specimen type only if a type column is provided
+     if (!is.null(type_column)) {
+       popup_text <- paste0(
+         popup_text,
+         ifelse(is.na(taxon_data[[type_column]]), "", #Omit if value is missing
+                paste0("<br>Type: ", taxon_data[[type_column]]))
+       )
+     }
+    
+     #Add collector information only if a collector column is provided
+     if (!is.null(collector_column)) {
+       popup_text <- paste0(
+         popup_text,
+         ifelse(is.na(taxon_data[[collector_column]]), "", #Omit if value is missing
+                paste0("<br>Collector: ", taxon_data[[collector_column]]))
+       )
+     }
+    
+     #Add collection depth only if a depth column is provided
+     if (!is.null(depth_column)) {
+       popup_text <- paste0(
+         popup_text,
+         ifelse(is.na(taxon_data[[depth_column]]), "", #Omit if value is missing
+                paste0("<br>Depth: ", taxon_data[[depth_column]], "m"))
+       )
+     }
+    
+    
+    
+    #Initialize an interactive Leaflet map using the filtered taxon data
+    taxon_map <- leaflet(taxon_data) |> 
+      addProviderTiles(providers$Esri.WorldImagery) |> #Add Esri satellite imagery as map background
+      fitBounds( #Automatically adjust map extent to include all records for the taxon
+        lng1 = min(taxon_data[[longtitude_column]], na.rm = TRUE) - 0.1,
+        lat1 = min(taxon_data[[latitude_column]], na.rm = TRUE) - 0.1,
+        lng2 = max(taxon_data[[longtitude_column]], na.rm = TRUE) + 0.1,
+        lat2 = max(taxon_data[[latitude_column]], na.rm = TRUE) + 0.1
+        #Add 0.1 degrees of padding to each boundary to prevent excessive zooming
+      ) |> 
+
+      #Add interactive markers for the current taxon's specimen locations
+      addAwesomeMarkers(
+        lng = taxon_data[[longtitude_column]], #Set marker longitudes
+        lat = taxon_data[[latitude_column]],   #Set marker latitudes
+        icon = taxon_icons,                    #Apply the colored leaf icons
+        
+        #Display the taxon name in italics when hovering over a marker
+        label = ~lapply(
+          paste0("<i>", taxon_data[[taxon_column]], "</i>"),
+          htmltools::HTML
+        ),
+        
+        #Display the corresponding specimen information when a marker is clicked
+        popup = ~lapply(popup_text, htmltools::HTML)
+      )
+    
+    #Store the completed map in the list, using the taxon name as its key
+    maps[[as.character(taxon)]] <- taxon_map
+  }
+  
+  #Return the named list containing all individual taxon maps
+  return(maps)
+}
+```
+
+### **Test Functions**
+
+#### [Function 1: Assign marker colors to each taxon]{.underline}
+
+#### *Codium* dataset
+
+```{r}
+#Assign marker colors to each Codium taxon (18 total)
+Codium_color <- assign_taxon_color(
+  Codium,  #Dataset containing Codium records
+  "Taxon") #Column containing taxon names
+
+datatable(Codium_color) #Interactive table to fully view output
+```
+
+#### *Scinaia* dataset
+
+```{r}
+#Assign marker colors to each Scinaia taxon (4 total)
+Scinaia_color <- assign_taxon_color(
+  Scinaia,   #Dataset containing Scinaia records
+  "Species") #Column containing taxon names
+
+datatable(Scinaia_color) #Interactive table to fully view output
+```
+
+#### [Function 2: Generate individual interactive distribution maps for each taxon]{.underline}
+
+#### List of maps generated for *Codium* dataset.
+
+```{r}
+#Generate individual interactive maps for each Codium taxon (18 total)
+Codium_maps <- create_taxon_maps(
+  Codium_color,   #Dataset containing Codium records and marker colors
+  "Taxon",        #Column containing taxon names
+  "Long",         #Column containing longitude coordinates
+  "Lat",          #Column containing latitude coordinates
+  "Island",       #Column containing collection location information
+  "Date",         #Column containing collection dates
+  "Authority",    #Column containing taxonomic authority information
+  "Type",         #Column containing specimen type information
+  "Collector",    #Column containing collector(s) names
+  "Depth",        #Column containing collection depths
+  "marker_color") #Column containing assigned marker colors
+
+#Display the names of all taxa for which maps were created
+names(Codium_maps)
+```
+
+#### A specific *Codium* map
+
+```{r}
+#Display the interactive map for a specific Codium taxon
+Codium_maps[["Codium cf. arabicum"]]
+```
+
+#### All *Codium* maps
+
+```{r}
+# Display all Codium maps
+htmltools::tagList(
+  lapply(names(Codium_maps), function(taxon) { #Loop through the names of all taxa with available maps
+    htmltools::tagList(                        #Create a heading and display the corresponding taxon's map
+      htmltools::tags$h4(                      #Add the taxon name as a level-four heading
+        htmltools::tags$em(taxon)),            #Italicized the taxon name
+      Codium_maps[[taxon]]                     #Retrieve and display the map associated with the current taxon
+    )
+  })
+)
+```
+
+#### List of maps generated for *Scinaia* dataset.
+
+```{r}
+#Generate individual interactive maps for each Scinaia taxon (4 total)
+Scinaia_maps <- create_taxon_maps(
+  Scinaia_color,  #Dataset containing Scinaia records and marker colors
+  "Species",      #Column containing taxon names
+  "Longitude",    #Column containing longitude coordinates
+  "Latitude",     #Column containing latitude coordinates
+  "Location",     #Column containing collection location information
+  "Date",         #Column containing collection dates
+  NULL,           #No taxonomic authority column is available
+  "Type",         #Column containing specimen type information
+  "Collectors",   #Column containing collector(s) names
+  "Depth",        #Column containing collection depths
+  "marker_color") #Column containing assigned marker colors
+
+#Display the names of all taxa for which maps were created
+names(Scinaia_maps)
+```
+
+#### A specific *Scinaia* map
+
+```{r}
+#Display the interactive map for a specific Scinaia taxon
+Scinaia_maps[["Scinaia uohulualii"]]
+```
+
+#### All *Scinaia* maps
+
+```{r}
+# Display all Scinaia maps
+htmltools::tagList(
+  lapply(names(Scinaia_maps), function(taxon) { #Loop through the names of all taxa with available maps
+    htmltools::tagList(                         #Create a heading and display the corresponding taxon's map
+      htmltools::tags$h4(                       #Add the taxon name as a level-four heading
+        htmltools::tags$em(taxon)),             #Italicized the taxon name
+      Scinaia_maps[[taxon]]                     #Retrieve and display the map associated with the current taxon
+    )
+  })
+)
+```
