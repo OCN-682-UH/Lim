@@ -2,7 +2,7 @@
 ___
 This repository contains my assignments for this course, updated weekly.
 
-Week 7 update~
+Week 8 update~
 
 #### Contents
 
@@ -25,6 +25,9 @@ Week 7 update~
 * [*Week_07*](https://github.com/OCN-682-UH/Lim/tree/main/Week_07)
   * Introduction to Maps: building interactive maps
   * homework_maps.html = [HTML Output](https://01a11514-3b5f-3025-c175-dfa66464bb1e.share.connect.posit.cloud/)
+* [*Week_08*](https://github.com/OCN-682-UH/Lim/tree/main/Week_08)
+  * Functional Programming - Writing Reusable Codes
+  * homework_functions.html = [HTML Output](https://01a13d76-dfc0-531e-8b30-6169563e6536.share.connect.posit.cloud/)
 
 ##### About me:
 I'm a Marine Biology MS student in the [Sherwood Algal Biodiversity Lab](https://sherwoodalgalbiodiversitylab.weebly.com/) at UH Mānoa. I study the systematics and taxonomy of *Bryopsis* (Bryopsidales, Chlorophyta) from shallow and mesophotic habitats of the Hawaiian Islands.
@@ -110,6 +113,7 @@ ___
 |       ├── homework_quarto.qmd
 |       ├── intro_to_quarto.qmd
 |       └── quarto_part_2.qmd
+|       
 ├── Week_07
 |   ├── Data
 |   │   ├── tiles_cache/Esri.WorldImagery
@@ -126,3 +130,14 @@ ___
 |       ├── homework_maps.qmd
 |       ├── intro_to_maps_1.R
 |       └── intro_to_maps_2.R
+|       
+├── Week_08
+|   ├── Data
+|   │   ├── Codium_collection_data.csv
+|   │   └── Scinaia_collection_data.csv
+|   ├── Output
+|   │   └── homework_functions.html
+|   └── Scripts
+|       ├── rsconnect/documents/homework_functions.qmd/connect.posit.cloud/weishen23
+|       ├── functional_programming.R
+|       └── homework_functions.qmd
