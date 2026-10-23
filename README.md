@@ -2,7 +2,7 @@
 ___
 This repository contains my assignments for this course, updated weekly.
 
-Week 8 update~
+Week 9 update~
 
 #### Contents
 
@@ -26,8 +26,11 @@ Week 8 update~
   * Introduction to Maps: building interactive maps
   * homework_maps.html = [HTML Output](https://01a11514-3b5f-3025-c175-dfa66464bb1e.share.connect.posit.cloud/)
 * [*Week_08*](https://github.com/OCN-682-UH/Lim/tree/main/Week_08)
-  * Functional Programming - Writing Reusable Codes
+  * Functional Programming - writing reusable codes
   * homework_functions.html = [HTML Output](https://01a13d76-dfc0-531e-8b30-6169563e6536.share.connect.posit.cloud/)
+* [*Week_09*](https://github.com/OCN-682-UH/Lim/tree/main/Week_09)
+  * Working with Factors - lumping, reordering, filtering, and renaming levels
+  * homework_functions.html = [HTML Output](https://01a1682b-3576-c8f6-64c3-6f706231e531.share.connect.posit.cloud/)
 
 ##### About me:
 I'm a Marine Biology MS student in the [Sherwood Algal Biodiversity Lab](https://sherwoodalgalbiodiversitylab.weebly.com/) at UH Mānoa. I study the systematics and taxonomy of *Bryopsis* (Bryopsidales, Chlorophyta) from shallow and mesophotic habitats of the Hawaiian Islands.
@@ -141,3 +144,17 @@ ___
 |       ├── rsconnect/documents/homework_functions.qmd/connect.posit.cloud/weishen23
 |       ├── functional_programming.R
 |       └── homework_functions.qmd
+|       
+├── Week_09
+|   ├── Data
+|   │   ├── intertidal_data_dictionary.csv
+|   │   ├── intertidaldata.csv
+|   │   └── intertidaldata_latitude.csv
+|   ├── Output
+|   │   ├── fig-site-latitude-plot-1.png
+|   │   ├── fig-tide-height-plot-1.png
+|   │   └── homework_factors.html
+|   └── Scripts
+|       ├── rsconnect/documents/homework_factors.qmd/connect.posit.cloud/weishen23
+|       ├── homework_factors.qmd
+|       └── working_with_factors.R
