@@ -1,0 +1,116 @@
+---
+title: "Working with Factors"
+author: "Wei Shen Lim"
+date: "`r Sys.Date()`" #use your computer's date
+format:
+  html:
+    toc: true
+    toc-depth: 3 #set what how many headings levels show up
+    toc-location: right
+    toc-title: "Table of Contents"
+    code-fold: true #code hidden by default, with a toggle button
+    code-summary: "Show code" #customize the button label
+embed-resources: true
+warning: false
+message: false
+code-overflow: scroll
+knitr:
+  opts_chunk:
+    fig.path: "../Output/" #saves all figures into 'Output' folder, ../ to go up one directory from 'Scripts', then to 'Output'
+---
+
+### **Overview**
+
+This is an assignment to make a plot where at least one axis is a factor in a meaningful order, rather than R's default alphabetical order.
+
+### **Load Libraries**
+
+```{r}
+library(tidyverse)
+library(here)
+library(janitor)    #clean dataset
+library(ggbeeswarm) #swarm plot 
+library(calecopal)  #color palette of California
+```
+
+### **Load Data**
+
+We are using intertidal data collected from 15 sites, 10 transects per site spanning from low to high intertidal zone, recording percent cover of bare rock, algae, mussels, anemone, and several categories of barnacles, and actual counts of whelks, crabs, and stars.
+
+```{r}
+intertidal <- read_csv(here("Week_09", "Data", "intertidaldata.csv"))
+latitude <- read_csv(here("Week_09", "Data", "intertidaldata_latitude.csv"))
+```
+
+### **Clean and Prep Data**
+
+I first joined both data set by `Site`. Then I cleaned column names and the `Quadrat` column with the `{janitor}` package. The raw column names had spaces and parentheses, so I converted these to consistent snake_case format. The `Quadrat` column had entries with trailing numbers or period, so I cleaned this up to ensure there are only 3 unique entries for this column.
+
+```{r}
+full_data <- intertidal |> 
+  left_join(latitude, by = "Site") |> #Join both datasets by Site
+  clean_names() |>                    #Convert column names to consistent snake_case format  
+  mutate(quadrat = str_remove(quadrat, "[.0-9]+$"), #Remove trailing periods and numbers at the very end of the string
+         quadrat = str_squish(quadrat))             #Remove all excess whitespace
+
+names(intertidal) #Check column names before cleaning
+names(full_data)  #Check column names after cleaning
+
+sort(unique(intertidal$Quadrat)) #Check unique entries for Quadrat before cleaning
+sort(unique(full_data$quadrat))  #Check unique entries for quadrat after cleaning
+```
+
+### **Figure 1: Plot visualizing by tide height, in order from Low to High**
+
+Here I plotted algae percent cover by tide height. The `quadrat` column was converted into a factor and manually ordered since the order isn't determined by any data.
+
+```{r}
+#| label: fig-tide-height-plot
+#| fig-cap: "Algae percent cover by tide height from low to high."
+#| fig-align: "center" #center aligns the figure
+
+full_data |> 
+  ggplot(aes(x = factor(quadrat, levels = c("Low", "Mid", "High")), #Convert into a factor and ordered manually
+             y = algae,
+             color = quadrat)) +
+  geom_violin(fill = "white") +
+  geom_beeswarm(alpha = 0.5) +
+  geom_boxplot(fill = NA) +
+  guides (color = "none") +
+  labs(title = "Algae Dominate Low Intertidal Zone",
+       x = "Tide Height",
+       y = "Algae Cover (%)") +
+  scale_color_manual(values = cal_palette("superbloom3")) +
+  theme_minimal() +
+  theme(plot.title = element_text(size = 15, face = "bold"),
+        axis.title = element_text(size = 13),
+        axis.text = element_text(size = 10))
+  
+```
+
+### **Figure 2: Plot visualizing by site, in order of latitude**
+
+Here I plotted algae percent cover by site. The `site` column was converted into a factor and ordered by the `latitude` column in descending order so it goes from North to South.
+
+```{r}
+#| label: fig-site-latitude-plot
+#| fig-cap: "Low intertidal algae percent cover across sites from North to South."
+#| fig-align: "center" #center aligns the figure
+
+full_data |> 
+  filter(quadrat == "Low") |> #Filter for only low intertidal data
+  ggplot(aes(x = fct_reorder(site, latitude, .desc = TRUE), #Convert site into a factor and ordered by latitude
+             y = algae,
+             color = site)) +
+  geom_boxplot() +
+  geom_beeswarm() +
+  guides (color = "none") +
+  labs(title = "Low Intertidal Algae Cover Across Sites",
+       x = "Site (North → South)",
+       y = "Low Intertidal Algae Cover (%)") +
+  theme_minimal() +
+  theme(plot.title = element_text(size = 15, face = "bold"),
+        axis.title = element_text(size = 13),
+        axis.text = element_text(size = 10),
+        axis.text.x = element_text(angle = 45, hjust = 1)) #Angle text and aligned last letter to tick marks
+```
