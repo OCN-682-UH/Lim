@@ -31,6 +31,8 @@ Week 9 update~
 * [*Week_09*](https://github.com/OCN-682-UH/Lim/tree/main/Week_09)
   * Working with Factors - lumping, reordering, filtering, and renaming levels
   * homework_functions.html = [HTML Output](https://01a1682b-3576-c8f6-64c3-6f706231e531.share.connect.posit.cloud/)
+* [*Week_10/Scripts*](https://github.com/OCN-682-UH/Lim/tree/main/Week_10/Scripts)  
+  * Working with Strings - working with letters with stringr, regex, and tidytext
 
 ##### About me:
 I'm a Marine Biology MS student in the [Sherwood Algal Biodiversity Lab](https://sherwoodalgalbiodiversitylab.weebly.com/) at UH Mānoa. I study the systematics and taxonomy of *Bryopsis* (Bryopsidales, Chlorophyta) from shallow and mesophotic habitats of the Hawaiian Islands.
@@ -158,3 +160,7 @@ ___
 |       ├── rsconnect/documents/homework_factors.qmd/connect.posit.cloud/weishen23
 |       ├── homework_factors.qmd
 |       └── working_with_factors.R
+|
+├── Week_10/Scripts
+│   └────── working_with_strings.R
+|
