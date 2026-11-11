@@ -30,7 +30,7 @@ Week 12 update~
   * homework_functions.html = [HTML Output](https://01a13d76-dfc0-531e-8b30-6169563e6536.share.connect.posit.cloud/)
 * [*Week_09*](https://github.com/OCN-682-UH/Lim/tree/main/Week_09)
   * Working with Factors - lumping, reordering, filtering, and renaming levels
-  * homework_functions.html = [HTML Output](https://01a1682b-3576-c8f6-64c3-6f706231e531.share.connect.posit.cloud/)
+  * homework_factors.html = [HTML Output](https://01a1682b-3576-c8f6-64c3-6f706231e531.share.connect.posit.cloud/)
 * [*Week_10/Scripts*](https://github.com/OCN-682-UH/Lim/tree/main/Week_10/Scripts)  
   * Working with Strings - working with letters with stringr, regex, and tidytext
 * [*Week_12/intro_to_shiny_apps*](https://github.com/OCN-682-UH/Lim/tree/main/Week_12/intro_to_shiny_apps)  
