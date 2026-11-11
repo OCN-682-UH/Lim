@@ -1,0 +1,12 @@
+name: intro_to_shiny_apps
+title: intro_to_shiny_apps
+username: weishen23
+account: weishen23
+server: connect.posit.cloud
+hostUrl: https://api.connect.posit.cloud/v1
+appId: 01a1c806-cf70-f5a0-2072-7b815628f6d7
+bundleId:
+url: https://connect.posit.cloud/weishen23/content/01a1c806-cf70-f5a0-2072-7b815628f6d7
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
