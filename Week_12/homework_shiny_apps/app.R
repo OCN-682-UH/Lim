@@ -169,8 +169,11 @@ ui <- page_navbar( #Create a full-page Bootstrap 5 layout with a top banner
       }
       
       /* ---- Compact value box typography so all 5 fit cleanly in one row ---- */
-      .value-box-value { font-size: 0.95rem !important; }
-      .value-box-title { font-size: 0.72rem !important; }
+      .bslib-value-box .card-body {
+        padding: 0.45rem 1.75rem !important; /*Equal 0.45rem top/bottom padding and 1.75rem side padding*/
+      }
+      .value-box-title { font-size: 0.8rem !important; }
+      .value-box-value { font-size: 0.95rem !important; margin-bottom: 0 !important; }
     "))
   ),
   
