@@ -33,9 +33,10 @@ Week 12 update~
   * homework_factors.html = [HTML Output](https://01a1682b-3576-c8f6-64c3-6f706231e531.share.connect.posit.cloud/)
 * [*Week_10/Scripts*](https://github.com/OCN-682-UH/Lim/tree/main/Week_10/Scripts)  
   * Working with Strings - working with letters with stringr, regex, and tidytext
-* [*Week_12/intro_to_shiny_apps*](https://github.com/OCN-682-UH/Lim/tree/main/Week_12/intro_to_shiny_apps)  
+* [*Week_12*](https://github.com/OCN-682-UH/Lim/tree/main/Week_12)  
   * Introduction to Shiny Apps - making interactive shiny apps!
-  * intro_to_shiny_apps.html = [HTML Output](https://01a1c806-cf70-f5a0-2072-7b815628f6d7.share.connect.posit.cloud/)
+  * intro_to_shiny_apps/app.R = [Shiny Output](https://01a1c806-cf70-f5a0-2072-7b815628f6d7.share.connect.posit.cloud/)
+  * homework_shiny_apps/app.R = [Shiny Output](https://01a1e7b1-bae5-82ef-5c8e-99364aa4efee.share.connect.posit.cloud/)
 
 ##### About me:
 I'm a Marine Biology MS student in the [Sherwood Algal Biodiversity Lab](https://sherwoodalgalbiodiversitylab.weebly.com/) at UH Mānoa. I study the systematics and taxonomy of *Bryopsis* (Bryopsidales, Chlorophyta) from shallow and mesophotic habitats of the Hawaiian Islands.
@@ -169,8 +170,13 @@ ___
 |
 |
 ├── Week_12/intro_to_shiny_apps
-|   ├── Data
-|   │   └── stars.csv
-|   ├── rsconnect/connect.posit.cloud/weishen23
-|   └── app.R
-|
+|   ├── homework_shiny_apps
+|   │   ├── Data
+|   |   |    ├── Codium_collection_data.csv
+|   │   ├── rsconnect/connect.posit.cloud/weishen23
+|   │   └── app.R
+|   ├── intro_to_shiny_apps
+|   │   ├── Data
+|   |   |    ├── stars.csv
+|   │   ├── rsconnect/connect.posit.cloud/weishen23
+|   │   └── app.R
