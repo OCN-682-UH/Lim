@@ -19,11 +19,26 @@ library(fontawesome) #generate cool icons
 assign_taxon_color <- function(data, taxon_column) {
   
   #The 19 predefined marker colors supported by Leaflet awesomeIcons()
+  # Paired with their CCS hex codes for the legend
   available_colors <- c(
-    "red", "darkred", "lightred", "orange", "beige",
-    "green", "darkgreen", "lightgreen", "blue", "darkblue",
-    "lightblue", "purple", "darkpurple", "pink", "cadetblue",
-    "gray","lightgray","black" #Omitted "white" because marker icon will be white
+    red        = "#D63E2A",
+    darkred    = "#A23336",
+    lightred   = "#FF8E7F",
+    orange     = "#F69730",
+    beige      = "#FFCB92",
+    green      = "#72B026",
+    darkgreen  = "#728224",
+    lightgreen = "#BBF970",
+    blue       = "#38AADD",
+    darkblue   = "#0067A3",
+    lightblue  = "#8ADAFF",
+    purple     = "#D252B9",
+    darkpurple = "#5B396B",
+    pink       = "#FF91EA",
+    cadetblue  = "#436978",
+    gray       = "#575757",
+    lightgray  = "#A3A3A3",
+    black      = "#303030" #Omitted "white" because marker icon will be white
   )
   
   #Extract the column specified by taxon_column from the dataset
@@ -32,16 +47,19 @@ assign_taxon_color <- function(data, taxon_column) {
   
   #Assign a marker color to each unique taxon
   taxon_colors <- setNames(         #Uses taxon names as names for their corresponding colors
-    rep(available_colors,           #Repeat the 18 available colors as many times as needed
+    rep(names(available_colors),    #Repeat the 18 available colors as many times as needed
         length.out = length(taxa)), #Sets the total number of colors to match the number of taxa
-    taxa
+    taxa                            #Name each entry with its corresponding taxon
   )
   
-  #Add a new column named marker_color to the original dataset
+  #Add new columns named marker_color and legend_color to the original dataset
   data <- data |> 
     mutate(
-      marker_color = unname( #Removes the names from the resulting color vector so mutate() inserts only the color values into marker_color
-        taxon_colors[as.character(.data[[taxon_column]])] #Converts the taxon values to character strings so they match the names used in taxon_colors
+      marker_color = unname( #Removes the names from the resulting color vector so mutate() inserts only the color values
+        taxon_colors[as.character(.data[[taxon_column]])]#Converts the taxon values to character strings so they match the names used in taxon_colors
+      ),
+      legend_color = unname(
+        available_colors[marker_color] #hex codes for legend
       )
     )
   
@@ -64,12 +82,13 @@ make_summary_box <- function(title, icon_name, output_id, bg_color) {
 }
 
 # Function to italicize scientific names while keeping "cf." and "geppiorum4" upright
+# Using <span> tags to avoid Leaflet's .legend i swatch CSS conflict
 format_taxon <- function(x) {
   x |>
-    str_replace_all(" cf\\. ", "</i> cf. <i>") |>             #Close italics before "cf." and reopen after
-    str_replace_all('"geppiorum4"', '</i>"geppiorum4"<i>') |> #Close italics before "geppiorum4" and reopen after
-    (\(s) paste0("<i>", s, "</i>"))() |>                      #Wrap entire string in opening/closing <i> tags
-    str_remove_all("<i></i>")                                 #Remove any empty trailing <i></i> tag
+    str_replace_all(" cf\\. ", "</span> cf. <span style='font-style: italic;'>") |>             #Close italics before "cf." and reopen after
+    str_replace_all('"geppiorum4"', '</span>"geppiorum4"<span style=\'font-style: italic;\'>') |> #Close italics before "geppiorum4" and reopen after
+    (\(s) paste0("<span style='font-style: italic;'>", s, "</span>"))() |>                      #Wrap entire string in italic <span> tags
+    str_remove_all("<span style='font-style: italic;'></span>")                                 #Remove any empty trailing <span> tag
 }
 
 # Function to build standardized HTML popups with clickable GenBank links
@@ -99,7 +118,7 @@ data <- read_csv("Data/Codium_collection_data.csv", show_col_types = FALSE) |>
     Year = year(Date),                              #Extract collection year 
     Month = month(Date, label = TRUE, abbr = FALSE) #Extract full month name as an ordered factor
     ) |> 
-  assign_taxon_color(taxon_column = "Taxon") #Append marker_color column for Leaflet marker
+  assign_taxon_color(taxon_column = "Taxon") #Append marker_color and legend_color column for Leaflet
 
 ### Pre-compute filter choices
 taxon_choices  <- sort(unique(na.omit(data$Taxon)))       #Alphabetical list of unique species for dropdown
@@ -174,6 +193,16 @@ ui <- page_navbar( #Create a full-page Bootstrap 5 layout with a top banner
       }
       .value-box-title { font-size: 0.8rem !important; }
       .value-box-value { font-size: 0.95rem !important; margin-bottom: 0 !important; }
+      
+      /* ---- Auto-size Leaflet legend width to fit text without wrapping ---- */
+      .leaflet-control.info.legend{
+        width: max-content !important;
+        max-height: 365px !important;
+        white-space: nowrap !important; /* Keep color and taxon name on the same line */
+        font-size: 0.78rem !important;
+        line-height: 1.4 !important;
+        padding: 8px 14px 8px 10px !important;
+      }
     "))
   ),
   
@@ -529,7 +558,7 @@ server <- function(input, output, session) {
     },
     content = function(file) {             #Write the currently filtered rows to CSV
       df_filtered() |>
-        select(-any_of("marker_color")) |> #Drop internal map color column before exporting
+        select(-any_of(c("marker_color", "Legend_color"))) |> #Drop internal map and legend color column before exporting
         readr::write_csv(file)             #Save CSV preserving Hawaiian diacritics
     }
   )
@@ -603,11 +632,20 @@ server <- function(input, output, session) {
     leaflet(options = leafletOptions(zoomSnap = 0.25)) |> #Allow fractional zoom increments (0.25 steps)
       addProviderTiles(providers$Esri.WorldImagery) |>    #Add Esri satellite imagery base layer
       setView(lng = -166.7, lat = 24.0, zoom = 5.25) |>   #Center view over full Hawaiian Archipelago & PMNM
-      addEasyButton(                                      #Add on-map button to reset zoom & pan to default view
+      addEasyButton(                                      #Button 1: reset zoom & pan to default view
         easyButton(
           icon = "ion-earth",                             #Globe icon from Ionicons
           title = "Reset Map View",                       #Hover tooltip text
           onClick = JS("function(btn, map){ map.setView([24.0, -166.7], 5.25); }") #Reset to [lat, lng], zoom
+        )
+      ) |> 
+      addEasyButton(                                      #Button 2: toggle legend visibility on/off
+        easyButton(
+          icon = "fa-list",                               #List icon from FontAwesome
+          title = "Show / Hide Legend",                   #Hover tooltip text
+          onClick = JS("function(btn, map){
+                       document.querySelectorAll('.info.legend').forEach(el => el.classList.toggle('d-none'));
+                       }")
         )
       )
   })
@@ -660,7 +698,7 @@ server <- function(input, output, session) {
           values = na.omit(data$Depth), #Full depth distribution for legend gradient
           bins = depth_breaks,          #Custom 7-step tick marks reaching 114 m
           title = "Depth (m)",          #Legend header
-          opacity = 0.85                #Legend background opacity
+          opacity = 0.9                 #Legend background opacity
         )
     } else {
       # Default: custom 18-taxon Ionicons Leaf Markers
@@ -670,6 +708,12 @@ server <- function(input, output, session) {
         iconColor   = "white",        #White leaf symbol inside pin
         markerColor = df$marker_color #Pre-assigned species color from assign_taxon_color()
       )
+      
+      # Build sorted legend table for the taxa currently visible on the map
+      legend_df <- df |> 
+        distinct(Taxon, legend_color) |> #Get unique visible taxa and their assigned legend color
+        filter(!is.na(Taxon)) |>         #Exclude any NA taxa
+        arrange(Taxon)                   #Sort alphabetically
       
       proxy |>
         addAwesomeMarkers(
@@ -684,6 +728,13 @@ server <- function(input, output, session) {
             maxClusterRadius        = 25,        #Cluster pins within 25 pixels of each other
             disableClusteringAtZoom = 15         #Uncluster into individual pins at zoom level 15+
           )
+        ) |> 
+        addLegend(
+          position = "topright",           #Place taxon legend in upper-right corner
+          colors = legend_df$legend_color, #Legend colors matching the pins
+          labels = lapply(format_taxon(legend_df$Taxon), htmltools::HTML), #Italicized species names
+          title = "Taxon",                 #Legend header
+          opacity = 0.9                    #Legend background opacity
         )
     }
   })
