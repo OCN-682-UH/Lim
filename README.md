@@ -37,6 +37,9 @@ Week 12 update~
   * Introduction to Shiny Apps - making interactive shiny apps!
   * intro_to_shiny_apps/app.R = [Shiny Output](https://01a1c806-cf70-f5a0-2072-7b815628f6d7.share.connect.posit.cloud/)
   * homework_shiny_apps/app.R = [Shiny Output](https://01a1e7b1-bae5-82ef-5c8e-99364aa4efee.share.connect.posit.cloud/)
+* [*Week_13*](https://github.com/OCN-682-UH/Lim/tree/main/Week_13)
+  * Iterative Coding - Base-R for loop and purrr map() 
+  * homework_iterative_coding.html = [HTML Output](https://01a1f124-2944-1d5b-ce37-a97728355bb7.share.connect.posit.cloud/)
 
 ##### About me:
 I'm a Marine Biology MS student in the [Sherwood Algal Biodiversity Lab](https://sherwoodalgalbiodiversitylab.weebly.com/) at UH Mānoa. I study the systematics and taxonomy of *Bryopsis* (Bryopsidales, Chlorophyta) from shallow and mesophotic habitats of the Hawaiian Islands.
@@ -180,3 +183,25 @@ ___
 |   |   |    ├── stars.csv
 |   │   ├── rsconnect/connect.posit.cloud/weishen23
 |   │   └── app.R
+|       
+├── Week_13
+|   ├── Data
+|   │   ├── cond_data
+|   |   |    ├── 011521_CT316_1pcal.csv
+|   |   |    ├── 011621_CT316_1pcal.csv
+|   |   |    └── 011721_CT354_1pcal.csv
+|   │   ├── homework
+|   |   |    ├── TP1.csv
+|   |   |    ├── TP2.csv
+|   |   |    ├── TP3.csv
+|   |   |    └── TP4.csv
+|   ├── Output
+|   │   ├── 011521_CT316_1pcal_temp.png
+|   │   ├── 011621_CT316_1pcal_temp.png
+|   │   ├── 011721_CT354_1pcal_temp.png
+|   │   └── homework_iterative_coding.html
+|   └── Scripts
+|       ├── rsconnect/documents/homework_iterative_coding.qmd/connect.posit.cloud/weishen23
+|       ├── homework_iterative_coding.qmd
+|       └── iterative_coding.R
+|
