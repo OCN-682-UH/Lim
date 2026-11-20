@@ -12,9 +12,9 @@ Week 12 update~
 * [*Week_02*](https://github.com/OCN-682-UH/Lim/tree/main/Week_02)  
   * first script to test out `here`, reading in 'weightdata.csv'
 * [*Week_03*](https://github.com/OCN-682-UH/Lim/tree/main/Week_03)  
-  * Intro to Plotting, ggplot with data from the "palmerpenguins" package
+  * Intro to Plotting: ggplot with data from the "palmerpenguins" package
 * [*Week_04*](https://github.com/OCN-682-UH/Lim/tree/main/Week_04)  
-  * Data Wrangling with dplyr and tidyr
+  * Data Wrangling: dplyr and tidyr
 * [*Week_05*](https://github.com/OCN-682-UH/Lim/tree/main/Week_05)
   * Data Wrangling: joins & dates with lubridate, and advanced plotting
 * [*Week_06*](https://github.com/OCN-682-UH/Lim/tree/main/Week_06)
@@ -26,20 +26,22 @@ Week 12 update~
   * Introduction to Maps: building interactive maps
   * homework_maps.html = [HTML Output](https://01a11514-3b5f-3025-c175-dfa66464bb1e.share.connect.posit.cloud/)
 * [*Week_08*](https://github.com/OCN-682-UH/Lim/tree/main/Week_08)
-  * Functional Programming - writing reusable codes
+  * Functional Programming: writing reusable codes
   * homework_functions.html = [HTML Output](https://01a13d76-dfc0-531e-8b30-6169563e6536.share.connect.posit.cloud/)
 * [*Week_09*](https://github.com/OCN-682-UH/Lim/tree/main/Week_09)
-  * Working with Factors - lumping, reordering, filtering, and renaming levels
+  * Working with Factors: lumping, reordering, filtering, and renaming levels
   * homework_factors.html = [HTML Output](https://01a1682b-3576-c8f6-64c3-6f706231e531.share.connect.posit.cloud/)
 * [*Week_10/Scripts*](https://github.com/OCN-682-UH/Lim/tree/main/Week_10/Scripts)  
-  * Working with Strings - working with letters with stringr, regex, and tidytext
+  * Working with Strings: working with letters with stringr, regex, and tidytext
 * [*Week_12*](https://github.com/OCN-682-UH/Lim/tree/main/Week_12)  
-  * Introduction to Shiny Apps - making interactive shiny apps!
+  * Introduction to Shiny Apps: making interactive shiny apps!
   * intro_to_shiny_apps/app.R = [Shiny Output](https://01a1c806-cf70-f5a0-2072-7b815628f6d7.share.connect.posit.cloud/)
   * homework_shiny_apps/app.R = [Shiny Output](https://01a1e7b1-bae5-82ef-5c8e-99364aa4efee.share.connect.posit.cloud/)
 * [*Week_13*](https://github.com/OCN-682-UH/Lim/tree/main/Week_13)
-  * Iterative Coding - Base-R for loop and purrr map() 
+  * Iterative Coding: Base-R for loop and purrr map() 
   * homework_iterative_coding.html = [HTML Output](https://01a1f124-2944-1d5b-ce37-a97728355bb7.share.connect.posit.cloud/)
+* [*Week_14*](https://github.com/OCN-682-UH/Lim/tree/main/Week_14)
+  * Introduction to Models: basic linear modeling, viewing results in base R, broom, and modelsummary, running many models at the same time with purrr, and intro to tidymodels
 
 ##### About me:
 I'm a Marine Biology MS student in the [Sherwood Algal Biodiversity Lab](https://sherwoodalgalbiodiversitylab.weebly.com/) at UH Mānoa. I study the systematics and taxonomy of *Bryopsis* (Bryopsidales, Chlorophyta) from shallow and mesophotic habitats of the Hawaiian Islands.
@@ -204,4 +206,10 @@ ___
 |       ├── rsconnect/documents/homework_iterative_coding.qmd/connect.posit.cloud/weishen23
 |       ├── homework_iterative_coding.qmd
 |       └── iterative_coding.R
+|
+├── Week_14
+|   ├── Output
+|   │   └── table.docx
+|   └── Scripts
+|       └── intro_to_models.R
 |
